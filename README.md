@@ -1,1 +1,1 @@
-# OObat.online
+# OObat
