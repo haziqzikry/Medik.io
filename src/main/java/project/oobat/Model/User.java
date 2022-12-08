@@ -2,32 +2,52 @@ package project.oobat.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "user")
-@Setter@Getter
+@Entity // This tells Hibernate to make a table out of this class
+@Data // This tells Lombok to generate getters and setters
+@NoArgsConstructor // This tells Lombok to generate a no-args constructor
+@AllArgsConstructor // This tells Lombok to generate an all-args constructor
 public class User {
-    
-    @Id
-    @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+
+    public static enum Role {
+        PHARMACIST("PHARMACIST"),
+        CUSTOMER("CUSTOMER");
+
+        private String role;
+
+        private Role(String role) {
+            this.role = role;
+        }
+
+        public String getRole() {
+            return role;
+        }
+    }
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", nullable = false, unique = true)
-    private String username;
+    @Column(nullable = false)
+    private String name;
 
-    @Column(name = "password", nullable = false)
-    private String password;
-
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false, unique = true)
+    private String username;
+    private String password;
+    private String address;
+    private String phone;
+
+    @Enumerated
+    private Role role;
+    
 }
