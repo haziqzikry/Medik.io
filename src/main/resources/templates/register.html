@@ -1,0 +1,52 @@
+<!-- Registration form using Thymeleaf -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+    <form action="#" th:action="@{/register/submit}" th:object="${user}" method="post">
+        <table>
+            <tr>
+                <td>Full Name:</td>
+                <td><input type="text" name="name" th:name="name" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" name="username" th:name="username" th:field="*{username}" /></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" th:name="password" th:field="*{password}" /></td>
+            </tr>
+            <tr>
+                <td>Confirm Password:</td>
+                <td><input type="password" name="confirmPassword" /></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" name="email" th:name="email" th:field="*{email}" /></td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td><input type="text" name="phone" th:name="phone" th:field="*{phone}" /></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><input type="text" name="address" th:name="address" th:field="*{address}" /></td>
+            </tr>
+                <td><input type="submit" value="Register"/></td>
+            </tr>
+        </table>
+    </form>
+    <span th:utext="${successMessage}"></span>
+    <div th:if="${bindingResult!=null && bindingResult.getAllErrors()!=null}">
+      <ul th:each="data : ${bindingResult.getAllErrors()}">
+        <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+      </ul>
+</body>
+
+</html>
