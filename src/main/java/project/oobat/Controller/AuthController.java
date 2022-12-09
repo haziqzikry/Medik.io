@@ -30,6 +30,12 @@ public class AuthController {
         return "login";
     }
 
+    @PostMapping("/login")
+    public String loginSubmit() {
+        System.out.println("login thru post");
+        return "login";
+    }
+
     @GetMapping("/register")
     public String register(Model model) {
         AppUser appUser = new AppUser();
@@ -37,7 +43,7 @@ public class AuthController {
         return "register";
     }
 
-    @PostMapping("/register/submit")
+    @PostMapping("/register")
     public String registerSubmit(AppUser appUser, Model model, BindingResult bindingResult) {
         
         if (bindingResult.hasErrors()) {
@@ -59,15 +65,20 @@ public class AuthController {
         return "register";
     }
 
-    // @PostMapping("/login/submit")
-    // public String loginSubmit() {
-    //     return "ho";
+    // logout
+    @PostMapping("/logout")
+    public String logoutSubmit() {
+        return "login";
+    }
+
+    // @GetMapping("/home")
+    // public String home() {
+    //     return "home";
     // }
 
-    // logout method
-    @GetMapping("/logout")
-    public String logout() {
-        return "redirect:/login";
-    }
+    // @GetMapping("/admin/home")
+    // public String adminHome() {
+    //     return "admin_home";
+    // }
 
 }

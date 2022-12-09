@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import project.oobat.Model.AppUser;
+import project.oobat.Model.AppUserDetails;
 import project.oobat.Model.AppUser.Role;
 import project.oobat.Repository.AppUserRepository;
 
@@ -26,8 +27,8 @@ public class AppUserService implements UserDetailsService{
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return (UserDetails) appUserRepository.findByUsername(username).orElseThrow(
+    public AppUser loadUserByUsername(String username) throws UsernameNotFoundException {
+        return appUserRepository.findByUsername(username).orElseThrow(
             () -> new UsernameNotFoundException("User not found"));
     }
 

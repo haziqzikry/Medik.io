@@ -8,7 +8,7 @@
 
 <body>
     <h1>Registration Form</h1>
-    <form action="#" th:action="@{/register/submit}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
         <table>
             <tr>
                 <td>Full Name:</td>
@@ -47,6 +47,8 @@
       <ul th:each="data : ${bindingResult.getAllErrors()}">
         <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
       </ul>
+    </div>
+    <a href="/login">Login</a>
 </body>
 
 </html>
