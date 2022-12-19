@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+  <body>
+    <form action="" method="post">
+      <h1>Create New Account</h1>
+      <h4>Enter your details here!</h4>
+      <br />
+      <label for="fullname">Full Name</label>
+      <br />
+      <input type="text" name="fullname" id="fullname" />
+      <br />
+      <label for="username">Username</label>
+      <br />
+      <input type="text" name="username" id="username" />
+      <br />
+      <label for="email">Email</label>
+      <br />
+      <input type="email" name="email" id="email" />
+      <br />
+      <label for="phone">Phone</label>
+      <br />
+      <input type="tel" name="phone" id="phone" />
+      <br />
+      <label for="password">Password</label>
+      <br />
+      <input type="password" name="password" id="password" />
+      <br />
+      <input
+        class="form-check-input"
+        name="terms"
+        type="checkbox"
+        value=""
+        id="acceptTerms"
+        required
+      />
+      <label class="form-check-label" for="acceptTerms"
+        >I agree and accept the <a href="#">terms and conditions</a></label
+      >
+      <br />
+      <input type="submit" value="Create Account" />
+      <p class="small mb-0">
+        Already have an account? <a href="login.html">Log in</a>
+      </p>
+    </form>
+  </body>
+</html>
