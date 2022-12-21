@@ -254,7 +254,7 @@ h6 {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #012970;
+  color: #ffffff;
   font-family: "Poppins", sans-serif;
 }
 
@@ -372,6 +372,13 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+
+.login {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .logo {
   line-height: 1;
 }
@@ -437,6 +444,11 @@ h6 {
     visibility: visible;
     opacity: 1;
   }
+}
+
+.form{
+  background-color: white;
+  color: black;
 }
 
 .header .search-form {
