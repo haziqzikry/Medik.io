@@ -82,23 +82,26 @@
                   <div class="card-body">
                     <div class="pt-4 pb-2">
                       <h5 class="card-title text-center pb-0 fs-4">
-                        Create an Account
+                        Create New Account
                       </h5>
-                      <p class="text-center small">
-                        Enter your personal details to create account
-                      </p>
+                      <p class="text-center small">Enter your details here!</p>
                     </div>
 
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form
+                      action="Register"
+                      method="post"
+                      class="row g-3 needs-validation"
+                      novalidate
+                    >
                       <div class="col-12">
-                        <label for="yourName" class="form-label"
-                          >Your Name</label
+                        <label for="fullname" class="form-label"
+                          >Full Name</label
                         >
                         <input
                           type="text"
-                          name="name"
+                          name="full_name"
                           class="form-control"
-                          id="yourName"
+                          id="fullname"
                           required
                         />
                         <div class="invalid-feedback">
@@ -107,34 +110,15 @@
                       </div>
 
                       <div class="col-12">
-                        <label for="yourEmail" class="form-label"
-                          >Your Email</label
-                        >
-                        <input
-                          type="email"
-                          name="email"
-                          class="form-control"
-                          id="yourEmail"
-                          required
-                        />
-                        <div class="invalid-feedback">
-                          Please enter a valid Email address!
-                        </div>
-                      </div>
-
-                      <div class="col-12">
-                        <label for="yourUsername" class="form-label"
+                        <label for="username" class="form-label"
                           >Username</label
                         >
                         <div class="input-group has-validation">
-                          <span class="input-group-text" id="inputGroupPrepend"
-                            >@</span
-                          >
                           <input
                             type="text"
                             name="username"
                             class="form-control"
-                            id="yourUsername"
+                            id="username"
                             required
                           />
                           <div class="invalid-feedback">
@@ -144,14 +128,46 @@
                       </div>
 
                       <div class="col-12">
-                        <label for="yourPassword" class="form-label"
+                        <label for="email" class="form-label"> Email</label>
+                        <input
+                          type="email"
+                          name="email"
+                          class="form-control"
+                          id="email"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          Please enter a valid Email address!
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="phoneNum" class="form-label"></label>
+                          Phone Number</label
+                        >
+                        <input
+                          type="tel"
+                          name="phoneNum"
+                          class="form-control"
+                          id="phoneNum"
+                          placeholder="01x-xxxxxxxx"
+                          pattern="01[0-9]{1}-[0-9]{7,8}"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          Please enter a valid Phone Number!
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="password" class="form-label"
                           >Password</label
                         >
                         <input
                           type="password"
                           name="password"
                           class="form-control"
-                          id="yourPassword"
+                          id="password"
                           required
                         />
                         <div class="invalid-feedback">
@@ -186,7 +202,7 @@
                       <div class="col-12">
                         <p class="small mb-0">
                           Already have an account?
-                          <a href="login.html">Log in</a>
+                          <a href="login.html">Log in here!</a>
                         </p>
                       </div>
                     </form>
