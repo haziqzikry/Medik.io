@@ -1,5 +1,5 @@
 /**
-* Template Name: NiceAdmin - v2.4.1
+* Template Name: NiceAdmin - v2.5.0
 * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
@@ -238,13 +238,15 @@ h6 {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  background-color: #13293d;
+  color: #ffffff;
 }
 
 .card-header,
 .card-footer {
   border-color: #ebeef4;
-  background-color: #fff;
-  color: #798eb3;
+  background-color: #13293d;
+  color: #a2a2a2;
   padding: 15px;
 }
 
@@ -252,7 +254,7 @@ h6 {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #012970;
+  color: #ffffff;
   font-family: "Poppins", sans-serif;
 }
 
@@ -370,6 +372,13 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+
+.login {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .logo {
   line-height: 1;
 }
@@ -388,7 +397,7 @@ h6 {
 .logo span {
   font-size: 26px;
   font-weight: 700;
-  color: #012970;
+  color: #13293d;
   font-family: "Nunito", sans-serif;
 }
 
@@ -397,7 +406,7 @@ h6 {
   z-index: 997;
   height: 60px;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: #006494;
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
@@ -437,6 +446,11 @@ h6 {
   }
 }
 
+.form {
+  background-color: white;
+  color: black;
+}
+
 .header .search-form {
   width: 100%;
 }
@@ -467,7 +481,7 @@ h6 {
 }
 
 .header .search-form button i {
-  color: #012970;
+  color: #244f9b;
 }
 
 /*--------------------------------------------------------------
@@ -539,7 +553,7 @@ h6 {
 }
 
 .header-nav .notifications .notification-item:hover {
-  background-color: #f6f9ff;
+  background-color: #6d7481;
 }
 
 .header-nav .messages {
@@ -607,7 +621,7 @@ h6 {
 }
 
 .header-nav .profile .dropdown-item:hover {
-  background-color: #f6f9ff;
+  background-color: #526a98;
 }
 
 /*--------------------------------------------------------------
