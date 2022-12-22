@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Manage Account</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="/src/main/resources/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/src/main/resources/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/src/main/resources/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/src/main/resources/vendor/quill/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/src/main/resources/vendor/quill/quill.bubble.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/src/main/resources/vendor/remixicon/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/src/main/resources/vendor/simple-datatables/style.css"
+      rel="stylesheet"
+    />
+
+    <!-- Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+
+    <!-- Template Main CSS File -->
+    <link href="/src/main/resources/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <img src="/src/main/resources/img/logo.png" alt="" />
+          <span class="d-none d-lg-block">OObat</span>
+        </a>
+      </div>
+      <!-- End Logo -->
+
+      <div class="search-bar">
+        <form
+          class="search-form d-flex align-items-center"
+          method="POST"
+          action="#"
+        >
+          <input
+            type="text"
+            name="query"
+            placeholder="Search"
+            title="Enter search keyword"
+          />
+          <button type="submit" title="Search">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+      </div>
+      <!-- End Search Bar -->
+
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item d-block d-lg-none">
+            <a class="nav-link nav-icon search-bar-toggle" href="#">
+              <i class="bi bi-search"></i>
+            </a>
+          </li>
+          <!-- End Search Icon-->
+          <li class="nav-item dropdown pe-3">
+            <a
+              class="nav-link nav-profile d-flex align-items-center pe-0"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              <span class="d-none d-md-block dropdown-toggle ps-2"
+                >Login</span
+              > </a
+            ><!-- End Profile Iamge Icon -->
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- End Header -->
+
+    <main id="main" class="main">
+      <section class="section">
+        <div class="container">
+          <div class="pagetitle">
+            <h1>Manage Order</h1>
+            <p>Manage your order</p>
+          </div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="home-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#home"
+                type="button"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >
+                All Orders
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                To Ship
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                To Received
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="contact-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#contact"
+                type="button"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+              >
+                Completed
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                Canceled
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="home"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">OrderID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total</th>
+
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>01</td>
+                    <td>Otto</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                    <td>RM 100</td>
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>02</td>
+                    <td>Otto</td>
+                    <td>
+                      <span class="badge bg-info text-dark">Processing</span>
+                    </td>
+                    <td>RM 25</td>
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>03</td>
+                    <td>Ottot</td>
+                    <td><span class="badge bg-danger">Canceled</span></td>
+                    <td>RM 10</td>
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="profile"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+            >
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">OrderID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total</th>
+
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>02</td>
+                    <td>Otto</td>
+                    <td>
+                      <span class="badge bg-info text-dark">Processing</span>
+                    </td>
+                    <td>RM 25</td>
+
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="contact"
+              role="tabpanel"
+              aria-labelledby="contact-tab"
+            >
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">OrderID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total</th>
+
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>01</td>
+                    <td>Otto</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                    <td>RM 100</td>
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/src/main/resources/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/src/main/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/src/main/resources/vendor/chart.js/chart.umd.js"></script>
+    <script src="/src/main/resources/vendor/echarts/echarts.min.js"></script>
+    <script src="/src/main/resources/vendor/quill/quill.min.js"></script>
+    <script src="/src/main/resources/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/src/main/resources/vendor/tinymce/tinymce.min.js"></script>
+    <script src="/src/main/resources/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/src/main/resources/js/main.js"></script>
+  </body>
+</html>
