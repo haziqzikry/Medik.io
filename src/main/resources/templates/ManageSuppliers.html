@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Manage Suppliers</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+ <!-- Google Fonts -->
+ <link href="https://fonts.gstatic.com" rel="preconnect" />
+ <link
+   href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+   rel="stylesheet"
+ />
+
+ <!-- Vendor CSS Files -->
+ <link
+   href="/src/main/resources/vendor/bootstrap/css/bootstrap.min.css"
+   rel="stylesheet"
+ />
+ <link
+   href="/src/main/resources/vendor/bootstrap-icons/bootstrap-icons.css"
+   rel="stylesheet"
+ />
+ <link
+   href="/src/main/resources/vendor/boxicons/css/boxicons.min.css"
+   rel="stylesheet"
+ />
+ <link
+   href="/src/main/resources/vendor/quill/quill.snow.css"
+   rel="stylesheet"
+ />
+ <link
+   href="/src/main/resources/vendor/quill/quill.bubble.css"
+   rel="stylesheet"
+ />
+ <link
+   href="/src/main/resources/vendor/remixicon/remixicon.css"
+   rel="stylesheet"
+ />
+ <link
+   href="/src/main/resources/vendor/simple-datatables/style.css"
+   rel="stylesheet"
+ />
+
+ <!-- Template Main CSS File -->
+ <link href="/src/main/resources/css/style.css" rel="stylesheet" />
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.1.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <style>
+    td,th
+    {
+      padding: 5px;
+    }
+    .list td,.list th{
+      border: 1px solid black;
+      padding: 20px;
+    }
+    .list th
+    {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+<!-- <%      User user = new User();
+        if(request.getMethod().equals("GET") && request.getSession().getAttribute("loggedIn") == null){
+//           String redirectURL = "login.jsp";
+//           response.sendRedirect(redirectURL); 
+           
+        out.println("<script type=\"text/javascript\">");
+        out.println("alert('Please Login First!');");
+        out.println("location='login.jsp';");
+        out.println("</script>");
+        }
+        else{user = (User) request.getSession().getAttribute("user");
+        if(!user.getUserType().equals("Pharmacist")){
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('You do not have access to this page!');");
+            out.println("location='login.jsp';");
+            out.println("</script>");
+        }
+        }
+    %> -->
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+       <a href="index.html" class="logo d-flex align-items-center">
+         <img src="/src/main/resources/img/logo.png" alt="">
+         <span class="d-none d-lg-block">OObat</span>
+       </a>
+       <i class="bi bi-list toggle-sidebar-btn"></i>
+     </div><!-- End Logo -->
+ 
+
+   
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        
+        <li class="nav-item dropdown pe-3">
+
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <img src= "/src/main/resources/img/noProfPic.png" alt="Profile" class="rounded-circle">
+              <span class="d-none d-md-block dropdown-toggle ps-2"><jsp:getProperty name="user" property="username" /></span>
+            </a><!-- End Profile Image Icon -->
+  
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li class="dropdown-header">
+                  <h6><jsp:getProperty name="user" property="full_name" /></h6>
+                <span><jsp:getProperty name="user" property="userType" /></span>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="manageProfile.html">
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="manageProfile.html">
+                  <i class="bi bi-gear"></i>
+                  <span>Account Settings</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+             
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <form action="login.html" method="post">
+                <div class="dropdown-item d-flex align-items-center">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <input type="submit" value="Sign Out" style="background-color:transparent; border:0px solid transparent; padding-left:0px; width:100%; text-align:left;">
+                </div>
+                </form>
+              </li>
+  
+            </ul><!-- End Profile Dropdown Items -->
+          </li><!-- End Profile Nav -->
+  
+        </ul>
+      </nav><!-- End Icons Navigation -->
+  
+    </header><!-- End Header -->
+
+   <!-- ======= Sidebar ======= -->
+   <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed " href="indexAdmin.jsp">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="ManageOrder.html">
+          <i class="bi bi-clipboard-check"></i>
+          <span>Manage Order</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="ManageProduct.html">
+           <i class='bx bxs-capsule'></i>
+          <span>Manage Product</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="ManageCategory.html">
+          <i class="bi bi-grid"></i>
+          <span>Manage Category</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="ManageStock.html">
+          <i class="bi bi-box"></i>
+          <span>Manage Stock</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="ManageSuppliers.html">
+          <i class="bi bi-truck"></i>
+          <span>Manage Suppliers</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+    
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="ManageProfile.html">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle" >
+      <div style="display: flex; justify-content: space-between;">
+        <h1>Manage Suppliers</h1>
+
+      </div>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+
+          <li class="breadcrumb-item active">Manage Suppliers</li>
+        </ol>
+      </nav>
+
+
+    </div><!-- End Page Title -->
+    <script>
+      class suppliers{
+
+
+        constructor (name,contact,id,address,JDate,description)
+        {
+          this.name=name;
+          this.contact=contact;
+          this.id=id;
+          this.address=address;
+          this.JDate=JDate;
+          this.description=description;
+
+        }
+      }
+
+
+
+    </script>
+      <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+
+
+
+          <div class="card" style="width:1200px;">
+            <div class="card-body" >
+              <h5 class="card-title"></h5>
+
+
+
+              <div style="display: flex; justify-content: left;">
+                <div style="padding-right: 100px;">
+                    <form action="addSupplier" method="post">
+                  <table>
+
+
+                    <tr>
+                      <td><label for="inputText" class="col-sm-auto col-form-label">Suppliers Name</label></td>
+                      <td>:</td>
+                      <td>
+                          <div class="col-sm-12">
+                    <input type="text" class="form-control" name="suppliername" required>
+                  </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label for="inputText" class="col-sm-auto col-form-label">Contact Number</label></td>
+                      <td>:</td>
+                      <td>
+                      <div class="col-sm-12">
+                     <input type="text" class="form-control" name="contact" placeholder="01x-xxxxxxxx" pattern="01[0-9]{1}-[0-9]{7,8}" required>
+                     
+                  </div>
+                          </td>
+                    </tr>
+                    <tr>
+                      <td><label for="inputText" class="col-sm-auto col-form-label">Address</label></td>
+                      <td>:</td>
+                      <td>
+                          <div class="col-sm-12">
+                     <textarea name="address" required class="form-control" style="height: 100px"></textarea>
+                  </div>
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label for="inputText" class="col-sm-auto col-form-label">Description</label>
+                          </td>
+                      <td>:</td>
+                      <td>
+                          <div class="col-sm-12">
+                      <textarea name="description" required class="form-control" style="height: 100px"></textarea>
+
+                  </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><label for="inputText" class="col-sm-auto col-form-label">Join Date</label>
+                          </td>
+                      <td>:</td>
+                      <td>
+                      <div class="col-sm-12">
+                   
+                    <input type="date" class="form-control" name="date" required>
+                  </div>
+                        
+                      </td>
+                    </tr>
+
+                  </table>
+                   
+                </div>
+              </div>
+
+              <br>
+              <div>
+                 <input type="reset" value="Reset" class="btn btn-outline-secondary">&nbsp;&nbsp;
+                <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i> New Suppliers</button>
+              </div>
+ </form>
+
+
+
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+
+
+          <div class="card" style="width:1200px;">
+            <div class="card-body">
+                    
+                <a href="ManageSuppliers.html">
+                    <h5 class="card-title"><i class="bi bi-arrow-repeat"></i> Suppliers List</h5></a>
+                
+              
+                 <table class="table table-borderless datatable" >
+                     <thead>
+                     <tr>
+              <th>No</th><th>Supplier Name</th><th>Supplier ID</th><th>Contact No</th><th>Address</th><th>Description</th><th>Join Date</th><th>Action</th>
+                </tr>
+                     </thead>
+                <!-- <%
+                     String driver ="com.mysql.jdbc.Driver";
+        String dbName="PharmOnline";
+        String url="jdbc:mysql://localhost/"+dbName+"?";
+        String userName="root";
+        String password="";
+      
+        String query="SELECT * FROM Supplier ";
+        
+           Class.forName(driver);
+           Connection con=DriverManager.getConnection(url,userName,password);
+           Statement st=con.createStatement();
+           ResultSet rs=st.executeQuery(query);
+       
+            /* TODO output your page here. You may use following sample code. */
+            int counter=0;
+            while (rs.next())
+            {
+                
+                counter++;
+                
+                
+               
+                out.println("<tr>");
+                out.println("<td>"+Integer.toString(counter)+"</td>");
+       out.println("<td>"+rs.getString(1)+"</td>");
+                                 out.println("<td>"+rs.getString(2)+"</td>");
+                                  out.println("<td>"+rs.getString(3)+"</td>");
+                                   out.println("<td>"+rs.getString(4)+"</td>");
+                                     out.println("<td>"+rs.getString(5)+"</td>");
+                                    out.println("<td>"+rs.getDate(6).toString()+"</td>");
+                                    
+                                    out.println( 
+                                    "<td> "+"<div style='display: block;'>");
+                                    out.println("<a href='deleteSupplier?id="+rs.getString(2)+"' onclick=' return confirm("+'"'+"Are you sure to delete this supplier"+'"'+")"+
+                                            "'>");
+                                    out.println( "<i class='bx bxs-trash'></i>");
+                                    out.println("</a>");
+                                    
+                                    out.println("<a href=\"Edit supplier.jsp?id="+rs.getString(2)
+                                            +"\">");
+                                    out.println( "<i class='bx bxs-edit'></i>");
+                                    out.println("</a>");
+                                   
+                                    out.println("</div></td>");
+                                    
+                                          
+                                          
+                                    
+            out.println("</tr>");
+            
+            }
+            
+        
+        st.close();
+        con.close();
+                    %>
+                     
+               -->
+                 </table>
+             
+
+
+
+
+
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>OObat</span></strong>. All Rights Reserved
+    </div>
+   
+  </footer><!-- End Footer -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/src/main/resources/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/src/main/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/src/main/resources/vendor/chart.js/chart.min.js"></script>
+    <script src="/src/main/resources/vendor/echarts/echarts.min.js"></script>
+    <script src="/src/main/resources/vendor/quill/quill.min.js"></script>
+    <script src="/src/main/resources/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/src/main/resources/vendor/tinymce/tinymce.min.js"></script>
+    <script src="/src/main/resources/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/src/main/resources/js/main.js"></script>
+
+</body>
+
+</html>
