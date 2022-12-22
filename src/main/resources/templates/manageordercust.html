@@ -120,12 +120,12 @@
             <li class="nav-item" role="presentation">
               <button
                 class="nav-link active"
-                id="home-tab"
+                id="all-tab"
                 data-bs-toggle="tab"
-                data-bs-target="#home"
+                data-bs-target="#all"
                 type="button"
                 role="tab"
-                aria-controls="home"
+                aria-controls="all"
                 aria-selected="true"
               >
                 All Orders
@@ -134,12 +134,12 @@
             <li class="nav-item" role="presentation">
               <button
                 class="nav-link"
-                id="profile-tab"
+                id="ship-tab"
                 data-bs-toggle="tab"
-                data-bs-target="#profile"
+                data-bs-target="#ship"
                 type="button"
                 role="tab"
-                aria-controls="profile"
+                aria-controls="ship"
                 aria-selected="false"
               >
                 To Ship
@@ -148,12 +148,12 @@
             <li class="nav-item" role="presentation">
               <button
                 class="nav-link"
-                id="profile-tab"
+                id="received-tab"
                 data-bs-toggle="tab"
-                data-bs-target="#profile"
+                data-bs-target="#received"
                 type="button"
                 role="tab"
-                aria-controls="profile"
+                aria-controls="received"
                 aria-selected="false"
               >
                 To Received
@@ -162,12 +162,12 @@
             <li class="nav-item" role="presentation">
               <button
                 class="nav-link"
-                id="contact-tab"
+                id="completed-tab"
                 data-bs-toggle="tab"
-                data-bs-target="#contact"
+                data-bs-target="#completed"
                 type="button"
                 role="tab"
-                aria-controls="contact"
+                aria-controls="completed"
                 aria-selected="false"
               >
                 Completed
@@ -176,12 +176,12 @@
             <li class="nav-item" role="presentation">
               <button
                 class="nav-link"
-                id="profile-tab"
+                id="Cancelled-tab"
                 data-bs-toggle="tab"
-                data-bs-target="#profile"
+                data-bs-target="#Cancelled"
                 type="button"
                 role="tab"
-                aria-controls="profile"
+                aria-controls="Cancelled"
                 aria-selected="false"
               >
                 Canceled
@@ -191,9 +191,9 @@
           <div class="tab-content" id="myTabContent">
             <div
               class="tab-pane fade show active"
-              id="home"
+              id="all"
               role="tabpanel"
-              aria-labelledby="home-tab"
+              aria-labelledby="all-tab"
             >
               <table class="table datatable">
                 <thead>
@@ -231,9 +231,10 @@
                     <td>02</td>
                     <td>Otto</td>
                     <td>
-                      <span class="badge bg-info text-dark">Processing</span>
+                      <span class="badge bg-info text-dark">To Ship</span>
                     </td>
                     <td>RM 25</td>
+
                     <td>
                       <a href="#" class="btn btn-sm">
                         <i class="bi bi-printer"></i>
@@ -248,6 +249,29 @@
                   </tr>
                   <tr>
                     <th scope="row">3</th>
+                    <td>02</td>
+                    <td>Otto</td>
+                    <td>
+                      <span class="badge bg-primary text-dark"
+                        >To Received</span
+                      >
+                    </td>
+                    <td>RM 25</td>
+
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
                     <td>03</td>
                     <td>Ottot</td>
                     <td><span class="badge bg-danger">Canceled</span></td>
@@ -269,9 +293,9 @@
             </div>
             <div
               class="tab-pane fade"
-              id="profile"
+              id="ship"
               role="tabpanel"
-              aria-labelledby="profile-tab"
+              aria-labelledby="ship-tab"
             >
               <table class="table datatable">
                 <thead>
@@ -291,7 +315,7 @@
                     <td>02</td>
                     <td>Otto</td>
                     <td>
-                      <span class="badge bg-info text-dark">Processing</span>
+                      <span class="badge bg-info text-dark">To Ship</span>
                     </td>
                     <td>RM 25</td>
 
@@ -312,9 +336,54 @@
             </div>
             <div
               class="tab-pane fade"
-              id="contact"
+              id="received"
               role="tabpanel"
-              aria-labelledby="contact-tab"
+              aria-labelledby="received-tab"
+            >
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">OrderID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total</th>
+
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>02</td>
+                    <td>Otto</td>
+                    <td>
+                      <span class="badge bg-primary text-dark"
+                        >To Received</span
+                      >
+                    </td>
+                    <td>RM 25</td>
+
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="completed"
+              role="tabpanel"
+              aria-labelledby="completed-tab"
             >
               <table class="table datatable">
                 <thead>
@@ -334,6 +403,46 @@
                     <td>01</td>
                     <td>Otto</td>
                     <td><span class="badge bg-success">Completed</span></td>
+                    <td>RM 100</td>
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="Cancelled"
+              role="tabpanel"
+              aria-labelledby="completed-tab"
+            >
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">OrderID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total</th>
+
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>01</td>
+                    <td>Otto</td>
+                    <td><span class="badge bg-danger">Cancelled</span></td>
                     <td>RM 100</td>
                     <td>
                       <a href="#" class="btn btn-sm">
