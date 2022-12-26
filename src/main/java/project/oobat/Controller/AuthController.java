@@ -30,11 +30,11 @@ public class AuthController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String loginSubmit() {
-        System.out.println("login thru post");
-        return "login";
-    }
+    // @PostMapping("/login")
+    // public String loginSubmit() {
+    //     System.out.println("login thru post");
+    //     return "login";
+    // }
 
     @GetMapping("/register")
     public String register(Model model) {
@@ -65,20 +65,16 @@ public class AuthController {
         return "register";
     }
 
-    // logout
-    @PostMapping("/logout")
-    public String logoutSubmit() {
-        return "login";
+    @GetMapping("/home")
+    public String home() {
+        System.out.println("home");
+        return "home";
     }
 
-    // @GetMapping("/home")
-    // public String home() {
-    //     return "home";
-    // }
-
-    // @GetMapping("/admin/home")
-    // public String adminHome() {
-    //     return "admin_home";
-    // }
+    @GetMapping("/admin/home")
+    public String adminHome() {
+        System.out.println("admin home");
+        return "admin_home";
+    }
 
 }

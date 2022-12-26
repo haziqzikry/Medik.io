@@ -7,12 +7,12 @@
 </head>
 <body>
   <h2>Welcome to User Dashboard</h2>
-  <div sec:authorize="hasRole('PHARMACIST')">Text visible to user.</div>
+  <!-- <div sec:authorize="hasRole('PHARMACIST')">Text visible to user.</div>
   <div sec:authorize="hasRole('CUSTOMER')">Text visible to admin.</div>
   <p>Logged as: <span sec:authentication="username"></span></p>
   <p>Logged as name: <span sec:authentication="name"></span></p>
   <p>Has role: <span sec:authentication="authorities"></span></p>
-  <div sec:authentication="principal.authorities"></div>
+  <div sec:authentication="principal.authorities"></div> -->
   <div>
     <p><a th:href="@{/}">Home</a></p>
     <p><a th:href="@{/logout}">Log out</a></p>

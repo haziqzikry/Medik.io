@@ -18,7 +18,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         if (response.isCommitted()) {
             return;
         }
-        // clearAuthenticationAttributes(request);
+        clearAuthenticationAttributes(request);
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
 
@@ -27,7 +27,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         if (authentication.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("PHARMACIST"))) {
             url = "/admin/home";
         } else if (authentication.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("CUSTOMER"))) {
-            url = "user/home";
+            url = "/home";
         }
         return url;
     }
