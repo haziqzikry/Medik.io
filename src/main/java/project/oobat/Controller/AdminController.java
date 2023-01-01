@@ -1,16 +1,16 @@
-// package project.oobat.Controller;
+package project.oobat.Controller;
 
-// import org.springframework.stereotype.Controller;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-// @Controller
-// @RequestMapping("/admin")
-// public class AdminController {
+@Controller
+@RequestMapping("/admin")
+public class AdminController {
     
-//     @GetMapping("/home")
-//     public String home() {
-//         return "admin_home";
-//     }
+    @GetMapping("/home")
+    public String home() {
+        return "dzakref/admin_home";
+    }
 
-// }
+}

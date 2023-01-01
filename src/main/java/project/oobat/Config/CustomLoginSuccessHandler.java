@@ -27,7 +27,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         if (authentication.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("PHARMACIST"))) {
             url = "/admin/home";
         } else if (authentication.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("CUSTOMER"))) {
-            url = "/home";
+            url = "/user/home";
         }
         return url;
     }

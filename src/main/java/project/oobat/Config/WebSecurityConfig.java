@@ -53,8 +53,10 @@ public class WebSecurityConfig {
         http
             .authorizeRequests()
                 .antMatchers("/login", "/register", "/register/submit", "/login/submit").permitAll()
-                .antMatchers("/admin/**").hasAnyRole("PHARMACIST")
-                .antMatchers("/user/**").hasAnyRole("CUSTOMER")
+                // .antMatchers("/admin/**").hasRole("PHARMACIST")
+                .antMatchers("/admin/**").hasAuthority("PHARMACIST")
+                // .antMatchers("/user/**").hasRole("CUSTOMER")
+                .antMatchers("/user/**").hasAuthority("CUSTOMER")
                 .anyRequest().authenticated()
                 .and()
             .csrf().disable().formLogin()
