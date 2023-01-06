@@ -45,4 +45,8 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Stock> stocks;
 
+    // one to many relationship with order (one product can have many orders)
+    @OneToMany(mappedBy = "product")
+    private List<Order> orders;
+
 }

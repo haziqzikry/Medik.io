@@ -1,5 +1,6 @@
 package project.oobat.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,10 +30,19 @@ public class Payment {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    // private Long orderId;
-    // private String paymentMethod;
-    // private String paymentDate;
-    // private String paymentAmount;
-    // private String paymentStatus;
+    @Column
+    private String method;
+
+    @Column
+    private String status;
+
+    @Column
+    private String date;
+
+    @Column
+    private String time;
+
+    @Column
+    private String amount;
 
 }

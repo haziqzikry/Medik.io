@@ -36,6 +36,11 @@ public class Stock {
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
+    //many to one relationship with appuser(pharmacist) (one pharmacist can have many stocks)
+    @ManyToOne
+    @JoinColumn(name = "appuser_id")
+    private AppUser appuser;
+
     private int quantity;
 
 }
