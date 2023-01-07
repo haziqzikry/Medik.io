@@ -10,7 +10,7 @@ public class AdminController {
     
     @GetMapping("/home")
     public String home() {
-        return "dzakref/admin_home";
+        return "adminindex";
     }
 
 }

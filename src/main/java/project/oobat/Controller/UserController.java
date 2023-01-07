@@ -10,7 +10,7 @@ public class UserController {
     
     @GetMapping("/home")
     public String home() {
-        return "index";
+        return "userindex";
     }
     
     
