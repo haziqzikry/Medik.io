@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -20,7 +21,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "order")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,8 +40,10 @@ public class Order {
     @JoinColumn(name = "user_id")
     private AppUser user;
 
-    // list of products in order
-    private List<Product> products;
+    //TODO FIX THIS MAPPING IN ORDER
+    // // list of order items
+    // @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // private List<Product> orderItems;
 
     @Column
     private String status;

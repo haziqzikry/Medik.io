@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -116,7 +116,7 @@
               </li>
   
               <li>
-                <form action="login.html" method="post">
+                <form th:action="@{/logout}" method="post">
                 <div class="dropdown-item d-flex align-items-center">
                   <i class="bi bi-box-arrow-right"></i>
                   <input type="submit" value="Sign Out" style="background-color:transparent; border:0px solid transparent; padding-left:0px; width:100%; text-align:left;">

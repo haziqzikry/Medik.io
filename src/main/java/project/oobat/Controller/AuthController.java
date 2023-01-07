@@ -27,7 +27,7 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login() {
-        return "dzakref/login";
+        return "login";
     }
 
     // @PostMapping("/login")
@@ -40,7 +40,7 @@ public class AuthController {
     public String register(Model model) {
         AppUser appUser = new AppUser();
         model.addAttribute("user", appUser);
-        return "dzakref/register";
+        return "register";
     }
 
     @PostMapping("/register")
@@ -50,13 +50,13 @@ public class AuthController {
             model.addAttribute("user", appUser);
             model.addAttribute("successMessage", "User registered successfully!");
             model.addAttribute("bindingResult", bindingResult);
-            return "dzakref/register";
+            return "register";
         }
         List<Object> userExist = appUserService.isUserExist(appUser.getUsername());
         if ((boolean) userExist.get(0)) {
             model.addAttribute("user", appUser);
             model.addAttribute("userExist", userExist.get(1));
-            return "dzakref/register";
+            return "register";
         }
         //to register customer
         appUserService.registerCustomer(appUser);
@@ -66,7 +66,7 @@ public class AuthController {
         model.addAttribute("user", appUser);
 
         model.addAttribute("successMessage", "User registered successfully!");
-        return "dzakref/register";
+        return "register";
     }
 
 }

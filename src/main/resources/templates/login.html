@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -57,6 +57,8 @@
                     <form
                       class="form row g-3 needs-validation rounded row justify-content-center py-4"
                       novalidate
+                      th:action="@{/login}"
+                      method="post"
                     >
                       <div class="col-10">
                         <div class="input-group has-validation">
@@ -64,6 +66,7 @@
                             <input
                               type="text"
                               name="username"
+                              th:name="username"
                               class="form-control"
                               id="yourUsername"
                               required
@@ -82,6 +85,7 @@
                           <input
                             type="password"
                             name="password"
+                            th:name="password"
                             class="form-control"
                             id="yourPassword"
                             required
@@ -116,7 +120,7 @@
                       <div class="col-10">
                         <p class="small mb-3">
                           Don't have account?
-                          <a href="register.html">Create an account</a>
+                          <a th:href="@{/register}">Create an account</a>
                         </p>
                       </div>
                     </form>

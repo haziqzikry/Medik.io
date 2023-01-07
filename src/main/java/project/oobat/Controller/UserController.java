@@ -10,6 +10,9 @@ public class UserController {
     
     @GetMapping("/home")
     public String home() {
-        return "dzakref/home";
+        return "index";
     }
+    
+    
+
 }

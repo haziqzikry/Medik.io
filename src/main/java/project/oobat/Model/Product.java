@@ -16,7 +16,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -45,8 +45,6 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Stock> stocks;
 
-    // one to many relationship with order (one product can have many orders)
-    @OneToMany(mappedBy = "product")
-    private List<Order> orders;
+    //TODO FIX THIS MAPPING IN Product
 
 }

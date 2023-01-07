@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -82,7 +82,8 @@
                     </div>
 
                     <form
-                      action="Register"
+                      th:action="@{/register}"
+                      th:object="${user}"
                       method="post"
                       class="row g-3 needs-validation"
                       novalidate
@@ -93,7 +94,9 @@
                         >
                         <input
                           type="text"
-                          name="full_name"
+                          name="name"
+                          th:name="name"
+                          th:field="*{name}"
                           class="form-control"
                           id="fullname"
                           required
@@ -111,6 +114,8 @@
                           <input
                             type="text"
                             name="username"
+                            th:name="username"
+                            th:field="*{username}"
                             class="form-control"
                             id="username"
                             required
@@ -126,6 +131,8 @@
                         <input
                           type="email"
                           name="email"
+                          th:name="email"
+                          th:field="*{email}"
                           class="form-control"
                           id="email"
                           required
@@ -141,7 +148,9 @@
                         >
                         <input
                           type="tel"
-                          name="phoneNum"
+                          name="phone"
+                          th:name="phone"
+                          th:field="*{phone}"
                           class="form-control"
                           id="phoneNum"
                           placeholder="01x-xxxxxxxx"
@@ -160,6 +169,8 @@
                         <input
                           type="password"
                           name="password"
+                          th:name="password"
+                          th:field="*{password}"
                           class="form-control"
                           id="password"
                           required
@@ -213,7 +224,7 @@
                       <div class="col-12">
                         <p class="small mb-0">
                           Already have an account?
-                          <a href="login.html">Log in here!</a>
+                          <a th:href="@{/login}" >Log in here!</a>
                         </p>
                       </div>
                     </form>
