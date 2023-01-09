@@ -13,6 +13,9 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public void saveProduct(Product product) {
+        // set product date added to today
+        product.setDateAdded(java.time.LocalDate.now().toString());
+        product.setQuantity(0);
         productRepository.save(product);
     }
 

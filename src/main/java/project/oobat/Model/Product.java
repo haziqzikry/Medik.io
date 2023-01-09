@@ -26,17 +26,17 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "products_seq")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
-    private String price;
+    private double price;
 
     @Column(nullable = false)
-    private String quantity;
+    private int quantity;
 
     // column for date added with default value of current date
     @Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")
@@ -46,6 +46,6 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Stock> stocks;
 
-    //TODO FIX THIS MAPPING IN Product
+    //TODO FIX THIS Order MAPPING IN Product
 
 }
