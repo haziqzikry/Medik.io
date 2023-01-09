@@ -38,7 +38,8 @@ public class Product {
     @Column(nullable = false)
     private String quantity;
 
-    @Column
+    // column for date added with default value of current date
+    @Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")
     private String dateAdded;
 
     // one to many relationship with stock (one product can have many stocks)

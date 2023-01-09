@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Manage Account</title>
+    <title>Admin Dashboard</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -54,7 +54,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-       <a href="index.html" class="logo d-flex align-items-center">
+       <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
          <img src="/img/logo.png" alt="">
          <span class="d-none d-lg-block">OObat</span>
        </a>
@@ -83,8 +83,7 @@
   
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                  <h6><jsp:getProperty name="user" property="full_name" /></h6>
-                <span><jsp:getProperty name="user" property="userType" /></span>
+                <h6><span sec:authentication="principal.name"></h6>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -138,19 +137,19 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed " href="index.html">
+        <a class="nav-link collapsed " th:href="@{/admin/home}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/manageorder">
+        <a class="nav-link collapsed" th:href="@{/admin/manage-order}">
           <i class="bi bi-clipboard-check"></i>
           <span>Manage Order</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/manageproduct">
+        <a class="nav-link collapsed" th:href="@{/admin/manage-product}">
            <i class='bx bxs-capsule'></i>
           <span>Manage Product</span>
         </a>
@@ -162,13 +161,13 @@
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/managestock">
+        <a class="nav-link collapsed" th:href="@{/admin/manage-stock}">
           <i class="bi bi-box"></i>
           <span>Manage Stock</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/managesuppliers">
+        <a class="nav-link collapsed" th:href="@{/admin/manage-supplier}">
           <i class="bi bi-truck"></i>
           <span>Manage Suppliers</span>
         </a>

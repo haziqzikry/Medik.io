@@ -54,7 +54,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-       <a href="index.html" class="logo d-flex align-items-center">
+       <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
          <img src="/img/logo.png" alt="">
          <span class="d-none d-lg-block">OObat</span>
        </a>
@@ -83,9 +83,7 @@
   
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                  <h6><jsp:getProperty name="user" property="full_name" /></h6>
-                <span><jsp:getProperty name="user" property="userType" /></span>
-              </li>
+                <h6><span sec:authentication="principal.name"></h6>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -116,7 +114,7 @@
               </li>
   
               <li>
-                <form action="login.html" method="post">
+                <form th:action="@{/logout}" method="post">
                 <div class="dropdown-item d-flex align-items-center">
                   <i class="bi bi-box-arrow-right"></i>
                   <input type="submit" value="Sign Out" style="background-color:transparent; border:0px solid transparent; padding-left:0px; width:100%; text-align:left;">
@@ -138,19 +136,19 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed " href="indexAdmin.jsp">
+        <a class="nav-link collapsed " th:href="@{/admin/home}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageOrder.html">
+        <a class="nav-link collapsed" th:href="@{/admin/manage-order}">
           <i class="bi bi-clipboard-check"></i>
           <span>Manage Order</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link " href="ManageProduct.html">
+        <a class="nav-link " th:href="@{/admin/manage-product}">
            <i class='bx bxs-capsule'></i>
           <span>Manage Product</span>
         </a>
@@ -162,13 +160,13 @@
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageStock.html">
+        <a class="nav-link collapsed" th:href="@{/admin/manage-stock}">
           <i class="bi bi-box"></i>
           <span>Manage Stock</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageSuppliers.html">
+        <a class="nav-link collapsed" th:href="@{/admin/manage-supplier}">
           <i class="bi bi-truck"></i>
           <span>Manage Suppliers</span>
         </a>
@@ -274,7 +272,7 @@
             <div class="col-xl-8">
               <div class="card">
                 <div class="card-body">
-                  <form>
+                  <form th:action="@{/admin/add-product}" th:object="${product}" method="post" >
                     <div class="row">
                       <div class="col-md-6">
                         <div class="my-3">
@@ -283,6 +281,8 @@
                             type="text"
                             class="form-control"
                             placeholder="Product Name"
+                            th:name="name"
+                            th:field="*{name}"
                           />
                         </div>
                       </div>
@@ -292,7 +292,9 @@
                           <input
                             type="text"
                             class="form-control"
-                            placeholder="Product Name"
+                            placeholder="Price"
+                            th:name="price"
+                            th:field="*{price}"
                           />
                         </div>
                       </div>
@@ -304,36 +306,41 @@
                           <input
                             type="text"
                             class="form-control"
-                            placeholder="Product Name"
+                            placeholder="Description"
+                            th:name="description"
+                            th:field="*{description}"
                           />
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="my-3">
-                          <label class="form-label">Date Added</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Product Name"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
                       <div class="col-md-6">
                         <div class="my-3">
                           <label class="form-label">Quantity</label>
                           <input
+                            type="text"
                             class="form-control"
-                            type="date"
-                            id="birthday"
-                            name="birthday"
+                            placeholder="Quantity"
+                            th:name="quantity"
+                            th:field="*{quantity}"
                           />
                         </div>
                       </div>
+                    </div>
+                    <!-- <div class="row">
+                      <div class="col-md-6">
+                        <div class="my-3">
+                          <label class="form-label">Date Added</label>
+                          <input
+                            class="form-control"
+                            type="date"
+                            id="dateadded"
+                            th:name="dateAdded"
+                            th:field="*{dateAdded}"
+                          />
+                        </div>
+                      </div> -->
                       <div class="col-md-6">
                         <div class="my-5">
-                          <button class="btn btn-primary">Save</button>
+                          <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                       </div>
                     </div>
