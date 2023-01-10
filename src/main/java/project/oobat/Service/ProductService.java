@@ -12,11 +12,23 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    public Iterable<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
+
     public void saveProduct(Product product) {
         // set product date added to today
         product.setDateAdded(java.time.LocalDate.now().toString());
         product.setQuantity(0);
         productRepository.save(product);
+    }
+
+    public void updateProduct(Product product) {
+        productRepository.save(product);
+    }
+
+    public void deleteProduct(Product product) {
+        productRepository.delete(product);
     }
 
 }

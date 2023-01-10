@@ -1,12 +1,19 @@
 package project.oobat.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import project.oobat.Service.ProductService;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    @Autowired
+    private ProductService productService;
     
     @GetMapping("/home")
     public String home() {
@@ -24,7 +31,8 @@ public class UserController {
     }
 
     @GetMapping("/view-product")
-    public String viewProduct() {
+    public String viewProduct(Model model) {
+        model.addAttribute("products", productService.getAllProducts());
         return "product";
     }
     
