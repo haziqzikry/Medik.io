@@ -40,10 +40,7 @@ public class Order {
     @JoinColumn(name = "user_id")
     private AppUser user;
 
-    //TODO FIX THIS MAPPING IN ORDER
-    // // list of order items
-    // @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    // private List<Product> orderItems;
+    // one to many unidirectional 
 
     @Column
     private String status;

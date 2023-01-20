@@ -9,19 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import project.oobat.Service.ProductService;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
-
+@RequestMapping("/user/product")
+public class UserProductController {
+    
     @Autowired
     private ProductService productService;
     
-    @GetMapping("/home")
-    public String home() {
-        return "userindex";
-    }
-    
-    @GetMapping("/profile")
-    public String profile() {
-        return "userprofile";
+    @GetMapping("/view")
+    public String viewProduct(Model model) {
+        model.addAttribute("products", productService.getAllProducts());
+        return "product";
     }
 }
