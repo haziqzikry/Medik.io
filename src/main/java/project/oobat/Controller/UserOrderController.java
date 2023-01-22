@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+ 
 import project.oobat.Service.OrderService;
 
 @Controller
@@ -16,11 +16,11 @@ public class UserOrderController {
 
     @GetMapping("/view")
     public String viewOrder() {
-        return "vieworder";
+        return "user/vieworder";
     }
 
     @GetMapping("/cart")
     public String viewCart() {
-        return "cart";
+        return "user/cart";
     }
 }
