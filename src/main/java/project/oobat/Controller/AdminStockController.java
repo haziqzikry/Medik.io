@@ -16,6 +16,6 @@ public class AdminStockController {
     
     @GetMapping("/manage")
     public String manageStock() {
-        return "managestock";
+        return "admin/managestock";
     }
 }

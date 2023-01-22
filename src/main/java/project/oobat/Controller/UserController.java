@@ -17,11 +17,11 @@ public class UserController {
     
     @GetMapping("/home")
     public String home() {
-        return "userindex";
+        return "user/home";
     }
     
     @GetMapping("/profile")
     public String profile() {
-        return "userprofile";
+        return "user/profile";
     }
 }

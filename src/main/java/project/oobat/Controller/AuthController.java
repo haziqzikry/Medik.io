@@ -27,7 +27,7 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "misc/login";
     }
 
     // @PostMapping("/login")
@@ -40,14 +40,14 @@ public class AuthController {
     public String register(Model model) {
         AppUser appUser = new AppUser();
         model.addAttribute("user", appUser);
-        return "register";
+        return "user/register";
     }
 
     @GetMapping("/register-admin")
     public String registerAdmin(Model model) {
         AppUser appUser = new AppUser();
         model.addAttribute("user", appUser);
-        return "adminreg";
+        return "admin/register";
     }
 
     @PostMapping("/register")
@@ -57,13 +57,13 @@ public class AuthController {
             model.addAttribute("user", appUser);
             model.addAttribute("successMessage", "User registered successfully!");
             model.addAttribute("bindingResult", bindingResult);
-            return "register";
+            return "user/register";
         }
         List<Object> userExist = appUserService.isUserExist(appUser.getUsername());
         if ((boolean) userExist.get(0)) {
             model.addAttribute("user", appUser);
             model.addAttribute("userExist", userExist.get(1));
-            return "register";
+            return "user/register";
         }
         //to register customer
         appUserService.registerCustomer(appUser);
@@ -73,7 +73,7 @@ public class AuthController {
         model.addAttribute("user", appUser);
 
         model.addAttribute("successMessage", "User registered successfully!");
-        return "register";
+        return "user/register";
     }
 
     @PostMapping("/register-admin")
@@ -83,13 +83,13 @@ public class AuthController {
             model.addAttribute("user", appUser);
             model.addAttribute("successMessage", "User registered successfully!");
             model.addAttribute("bindingResult", bindingResult);
-            return "adminreg";
+            return "admin/register";
         }
         List<Object> userExist = appUserService.isUserExist(appUser.getUsername());
         if ((boolean) userExist.get(0)) {
             model.addAttribute("user", appUser);
             model.addAttribute("userExist", userExist.get(1));
-            return "adminreg";
+            return "admin/register";
         }
         //to register customer
         // appUserService.registerCustomer(appUser);
@@ -99,7 +99,7 @@ public class AuthController {
         model.addAttribute("user", appUser);
 
         model.addAttribute("successMessage", "User registered successfully!");
-        return "adminreg";
+        return "admin/register";
     }
 
 }

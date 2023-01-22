@@ -16,7 +16,7 @@ public class AdminOrderController {
     
     @GetMapping("/manage")
     public String manageOrder() {
-        return "manageorder";
+        return "admin/manageorder";
     }
 
 }

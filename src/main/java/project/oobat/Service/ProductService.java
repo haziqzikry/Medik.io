@@ -16,6 +16,10 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public Product getProductById(Long id) {
+        return productRepository.findById(id).get();
+    }
+
     public void saveProduct(Product product) {
         // set product date added to today
         product.setDateAdded(java.time.LocalDate.now().toString());

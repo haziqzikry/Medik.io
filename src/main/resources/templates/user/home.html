@@ -91,7 +91,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="manageProfile.html">
+                <a class="dropdown-item d-flex align-items-center" th:href="@{/user/profile}">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
@@ -101,7 +101,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="manageProfile.html">
+                <a class="dropdown-item d-flex align-items-center" th:href="@{/user/profile}">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
@@ -144,20 +144,20 @@
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/user/view-order}">
+        <a class="nav-link collapsed" th:href="@{/user/order/view}">
           <i class="bi bi-clipboard-check"></i>
           <span>View Orders</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/user/view-product}">
+        <a class="nav-link collapsed" th:href="@{/user/product/view}">
            <i class='bx bxs-capsule'></i>
           <span>View Products</span>
         </a>
       </li><!-- End Profile Page Nav -->
       
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/user/view-cart}">
+        <a class="nav-link collapsed" th:href="@{/user/order/cart}">
           <i class="bi bi-cart"></i>
           <span>View Cart</span>
         </a>

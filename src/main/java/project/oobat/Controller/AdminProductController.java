@@ -21,12 +21,12 @@ public class AdminProductController {
     public String manageProduct(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
-        return "manageproduct";
+        return "admin/manageproduct";
     }
 
     @PostMapping("/add")
     public String addProduct(Product product) {
         productService.saveProduct(product);
-        return "manageproduct";
+        return "admin/manageproduct";
     }
 }

@@ -13,11 +13,11 @@ public class AdminController {
     
     @GetMapping("/home")
     public String home() {
-        return "adminindex";
+        return "admin/home";
     }
 
     @GetMapping("/profile")
     public String profile() {
-        return "adminprofile";
+        return "admin/profile";
     }
 }

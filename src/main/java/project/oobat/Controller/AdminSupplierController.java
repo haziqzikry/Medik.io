@@ -16,6 +16,6 @@ public class AdminSupplierController {
 
     @GetMapping("/manage")
     public String manageSupplier() {
-        return "managesuppliers";
+        return "admin/managesuppliers";
     }
 }
