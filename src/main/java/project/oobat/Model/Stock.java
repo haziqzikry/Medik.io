@@ -43,4 +43,12 @@ public class Stock {
 
     private int quantity;
 
+    // constructor without id
+    public Stock(Product product, Supplier supplier, AppUser appuser, int quantity) {
+        this.product = product;
+        this.supplier = supplier;
+        this.appuser = appuser;
+        this.quantity = quantity;
+    }
+
 }

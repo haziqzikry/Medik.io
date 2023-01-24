@@ -43,6 +43,17 @@ public class AppUser implements UserDetails {
         }
     }
 
+    //constructor without id
+    public AppUser(String name, String email, String username, String password, String address, String phone, Role role) {
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.address = address;
+        this.phone = phone;
+        this.role = role;
+    }
+
     @Id @SequenceGenerator(name = "users_seq", sequenceName = "users_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
     private Long id;

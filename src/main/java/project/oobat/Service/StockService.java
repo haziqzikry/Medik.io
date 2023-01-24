@@ -11,4 +11,8 @@ public class StockService {
     
     @Autowired
     private StockRepository stockRepository;
+
+    public void saveStock(Stock stock) {
+        stockRepository.save(stock);
+    }
 }

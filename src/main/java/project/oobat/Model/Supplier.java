@@ -42,4 +42,12 @@ public class Supplier {
     // one to many relationship with stock (one supplier can have many stocks)
     @OneToMany(mappedBy = "product")
     private List<Stock> stocks;
+
+    //constructor without id
+    public Supplier(String name, String address, String phone, String email) {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+    }
 }

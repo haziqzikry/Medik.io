@@ -101,5 +101,6 @@ public class AuthController {
         model.addAttribute("successMessage", "User registered successfully!");
         return "admin/register";
     }
+    
 
 }

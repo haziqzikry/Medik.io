@@ -52,7 +52,7 @@ public class WebSecurityConfig {
     
         http
             .authorizeRequests()
-                .antMatchers("/login", "/register", "/register-admin", "/register/submit", "/login/submit").permitAll()
+                .antMatchers("/login", "/register", "/register-admin", "/register/submit", "/login/submit", "/data").permitAll()
                 // .antMatchers("/admin/**").hasRole("PHARMACIST")
                 .antMatchers("/admin/**").hasAuthority("PHARMACIST")
                 // .antMatchers("/user/**").hasRole("CUSTOMER")

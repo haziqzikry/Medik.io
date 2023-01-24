@@ -46,6 +46,12 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Stock> stocks;
 
-    //TODO FIX THIS Order MAPPING IN Product
+    //constructor without id and date
+    public Product(String name, String description, double price, int quantity) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+    }
 
 }
