@@ -73,72 +73,71 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
 
-    <div class="d-flex align-items-center justify-content-between">
-       <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
-         <img src="/img/logo.png" alt="">
-         <span class="d-none d-lg-block">OObat</span>
-       </a>
-       <i class="bi bi-list toggle-sidebar-btn"></i>
-     </div><!-- End Logo -->
+  <div class="d-flex align-items-center justify-content-between">
+     <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
+       <img src="/img/logo.png" alt="">
+       <span class="d-none d-lg-block">OObat</span>
+     </a>
+     <i class="bi bi-list toggle-sidebar-btn"></i>
+   </div><!-- End Logo -->
+
+
  
 
-   
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
 
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
+      <li class="nav-item d-block d-lg-none">
+        <a class="nav-link nav-icon search-bar-toggle " href="#">
+          <i class="bi bi-search"></i>
+        </a>
+      </li><!-- End Search Icon-->
 
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
+      
+      <li class="nav-item dropdown pe-3">
 
-        
-        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src= "/img/noProfPic.png" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2"><jsp:getProperty name="user" property="username" /></span>
+          </a><!-- End Profile Image Icon -->
 
-            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src= "/img/noProfPic.png" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2"><jsp:getProperty name="user" property="username" /></span>
-            </a><!-- End Profile Image Icon -->
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-              <li class="dropdown-header">
-                  <h6><jsp:getProperty name="user" property="full_name" /></h6>
-                <span><jsp:getProperty name="user" property="userType" /></span>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" th:href="@{/admin/profile}">
-                  <i class="bi bi-person"></i>
-                  <span>My Profile</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <form action="login.html" method="post">
-                <div class="dropdown-item d-flex align-items-center">
-                  <i class="bi bi-box-arrow-right"></i>
-                  <input type="submit" value="Sign Out" style="background-color:transparent; border:0px solid transparent; padding-left:0px; width:100%; text-align:left;">
-                </div>
-                </form>
-              </li>
-  
-            </ul><!-- End Profile Dropdown Items -->
-          </li><!-- End Profile Nav -->
-  
-        </ul>
-      </nav><!-- End Icons Navigation -->
-  
-    </header><!-- End Header -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6><span sec:authentication="principal.name"></h6>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{/admin/proflie}">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <form th:action="@{/logout}" method="post">
+              <div class="dropdown-item d-flex align-items-center">
+                <i class="bi bi-box-arrow-right"></i>
+                <input type="submit" value="Sign Out" style="background-color:transparent; border:0px solid transparent; padding-left:0px; width:100%; text-align:left;">
+              </div>
+              </form>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
 
    <!-- ======= Sidebar ======= -->
    <aside id="sidebar" class="sidebar">
@@ -203,25 +202,7 @@
 
 
     </div><!-- End Page Title -->
-    <script>
-      class suppliers{
-
-
-        constructor (name,contact,id,address,JDate,description)
-        {
-          this.name=name;
-          this.contact=contact;
-          this.id=id;
-          this.address=address;
-          this.JDate=JDate;
-          this.description=description;
-
-        }
-      }
-
-
-
-    </script>
+    
       <section class="section">
       <div class="row">
         <div class="col-lg-6">
@@ -271,26 +252,14 @@
                       </td>
                     </tr>
                     <tr>
-                      <td><label for="inputText" class="col-sm-auto col-form-label">Description</label>
+                      <td><label for="inputText" class="col-sm-auto col-form-label">Email</label>
                           </td>
                       <td>:</td>
                       <td>
                           <div class="col-sm-12">
-                      <textarea name="description" required class="form-control" style="height: 100px"></textarea>
+                      <textarea name="email" required class="form-control" style="height: 100px"></textarea>
 
                   </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><label for="inputText" class="col-sm-auto col-form-label">Join Date</label>
-                          </td>
-                      <td>:</td>
-                      <td>
-                      <div class="col-sm-12">
-                   
-                    <input type="date" class="form-control" name="date" required>
-                  </div>
-                        
                       </td>
                     </tr>
 
@@ -328,7 +297,7 @@
                  <table class="table table-borderless datatable" >
                      <thead>
                      <tr>
-              <th>No</th><th>Supplier Name</th><th>Supplier ID</th><th>Contact No</th><th>Address</th><th>Description</th><th>Join Date</th><th>Action</th>
+              <th>No</th><th>Supplier Name</th><th>Supplier ID</th><th>Contact No</th><th>Address</th><th>Email</th><th>Action</th>
                 </tr>
                      </thead>
                

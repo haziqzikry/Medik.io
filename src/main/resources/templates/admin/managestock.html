@@ -69,16 +69,17 @@
 
 <body>
 
- <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
+   <!-- ======= Header ======= -->
+   <header id="header" class="header fixed-top d-flex align-items-center">
 
-   <div class="d-flex align-items-center justify-content-between">
-      <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
-        <img src="/img/logo.png" alt="">
-        <span class="d-none d-lg-block">OObat</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+    <div class="d-flex align-items-center justify-content-between">
+       <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
+         <img src="/img/logo.png" alt="">
+         <span class="d-none d-lg-block">OObat</span>
+       </a>
+       <i class="bi bi-list toggle-sidebar-btn"></i>
+     </div><!-- End Logo -->
+ 
 
    
 
@@ -91,50 +92,49 @@
           </a>
         </li><!-- End Search Icon-->
 
-     
+        
         <li class="nav-item dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src= "/img/noProfPic.png" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2"><jsp:getProperty name="user" property="username" /></span>
-          </a><!-- End Profile Image Icon -->
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <img src= "/img/noProfPic.png" alt="Profile" class="rounded-circle">
+              <span class="d-none d-md-block dropdown-toggle ps-2"><jsp:getProperty name="user" property="username" /></span>
+            </a><!-- End Profile Image Icon -->
+  
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li class="dropdown-header">
+                <h6><span sec:authentication="principal.name"></h6>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" th:href="@{/admin/proflie}">
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <form th:action="@{/logout}" method="post">
+                <div class="dropdown-item d-flex align-items-center">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <input type="submit" value="Sign Out" style="background-color:transparent; border:0px solid transparent; padding-left:0px; width:100%; text-align:left;">
+                </div>
+                </form>
+              </li>
+  
+            </ul><!-- End Profile Dropdown Items -->
+          </li><!-- End Profile Nav -->
+  
+        </ul>
+      </nav><!-- End Icons Navigation -->
+  
+    </header><!-- End Header -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-                <h6><jsp:getProperty name="user" property="full_name" /></h6>
-              <span><jsp:getProperty name="user" property="userType" /></span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" th:href="@{/admin/profile}">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-
-            <li>
-              <form action="login.html" method="post">
-              <div class="dropdown-item d-flex align-items-center">
-                <i class="bi bi-box-arrow-right"></i>
-                <input type="submit" value="Sign Out" style="background-color:transparent; border:0px solid transparent; padding-left:0px; width:100%; text-align:left;">
-              </div>
-              </form>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
-
-  </header><!-- End Header -->
 
 
   <!-- ======= Sidebar ======= -->
@@ -248,56 +248,13 @@
                       </td>
                     </tr>
 
-                    <script>
-                        function expiryDateRange()
-                        {
-                            var minDate=document.getElementByName("arrival").value;
-                            document.getElementByName("expiry").min=minDate;
-                            
-                        }
-                        
-                    </script>
-
-                    <tr>
-                        <td><label for="inputText" class="col-sm-auto col-form-label">Arrival Date</label></td>
-                    <td>:</td>
-                      
-                      <td>
-                          <div class="col-sm-auto">
-                          <input type="date" class="form-control" name="arrival"  oninput=""required>
-                          </div>
-                      </td>
-                    </tr>
-                  
-
-                    <tr>
-                         <td><label for="inputText" class="col-sm-auto col-form-label">Cost (RM)</label></td>
-                    <td>:</td>
-                    
-                      <td>
-                          <div class="col-sm-auto">
-                         <input type="number" class="form-control" name="cost" step="0.01" required >
-                        </div>
-                      </td>
-                    </tr>
-
 
                   </table>
                 </div>
                 <div>
                   <table>
                     
-                    <tr>
-                           <td><label for="inputText" class="col-sm-auto col-form-label">Reference No</label></td>
-                    <td>:</td>
-                    
-                      <td>
-                          <div class="col-sm-auto">
-                        <input type="text" name="reference" class="form-control" required>
-                         </div>
-                      </td>
-                    </tr>
-                    
+                  
                     <tr>
                                <td><label for="inputText" class="col-sm-auto col-form-label">Product Name</label></td>
                     <td>:</td>
@@ -311,17 +268,6 @@
                       </td>
                     </tr>
                     
-                    <tr>
-                 <td><label for="inputText" class="col-sm-auto col-form-label">Expiry Date</label></td>
-                    <td>:</td>
-                    
-                      
-                      <td>
-                           <div class="col-sm-auto">
-                          <input type="date" class="form-control" name="expiry"  required>
-                          </div>
-                      </td>
-                    </tr>
 
                     <tr>
                         <td><label for="inputText" class="col-sm-auto col-form-label">Quantity</label></td>
@@ -372,12 +318,10 @@
                   <th>Supplier Name</th>
                   <th>Product Name</th>
                   <th>Product ID</th>
-                  <th>Arrival Date</th>
-                  <th>Expiry Date</th>
+
                   <th>Cost<br>(RM)</th>
 
                   <th>Quantity</th>
-                  <th>Reference<br>No</th>
                   <th>Action</th>
                 </tr>
                   </thead>
