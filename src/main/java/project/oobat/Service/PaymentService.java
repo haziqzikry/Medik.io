@@ -3,13 +3,29 @@ package project.oobat.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import project.oobat.Model.Order;
 import project.oobat.Model.Payment;
+import project.oobat.Model.Product;
 import project.oobat.Repository.PaymentRepository;
 
 @Service
 public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
+
+    public void newPayment(Order order){
+        Payment payment = order.getPayment();
+        double payAmount = 0;
+        // loop order product list
+        for (Product p: order.getProducts()){
+            payAmount =+ p.getPrice();
+        }
+        payment.setAmount(payAmount);
+        // payment.setOrder(order);
+        // orderRepository.save(order);
+        payment.setOrder(order);
+        paymentRepository.save(payment);
+    }
 
     public void savePayment(Payment payment) {
         paymentRepository.save(payment);

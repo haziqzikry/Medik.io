@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,11 +25,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Order {
+
+    public static enum Status{
+        CART("CART"),
+        PENDING("PENDING"),
+        COMPLETED("COMPLETED"),
+        CANCELLED("CANCELLED");
+
+        private String status;
+
+        private Status(String status){
+            this.status = status;
+        }
+
+        public String getStatus(){
+            return status;
+        }
+
+    }
     
     @Id @SequenceGenerator(name = "orders_seq", sequenceName = "orders_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_seq")
@@ -49,13 +69,19 @@ public class Order {
         inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> products;
 
-    @Column
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     // date column with default value of current date and date format of yyyy-mm-dd
     @Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")
     private String date;
 
-
+    // constructor without id
+    public Order(Payment payment, AppUser user, List<Product> products, Status status) {
+        this.payment = payment;
+        this.user = user;
+        this.products = products;
+        this.status = status;
+    }
 
 }

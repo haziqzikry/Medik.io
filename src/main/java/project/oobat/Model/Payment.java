@@ -2,6 +2,7 @@ package project.oobat.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,43 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Payment {
+
+    public static enum Status{
+        PENDING("PENDING"),
+        COMPLETED("COMPLETED"),
+        CANCELLED("CANCELLED");
+
+        private String status;
+
+        private Status(String status){
+            this.status = status;
+        }
+
+        public String getStatus(){
+            return status;
+        }
+
+    }
+
+    public static enum Method{
+        CASH("CASH"),
+        CARD("CARD"),
+        EWALLET("EWALLET");
+
+        private String method;
+
+        private Method(String method){
+            this.method = method;
+        }
+
+        public String getMethod(){
+            return method;
+        }
+
+    }
+
+
+
     @Id @SequenceGenerator(name = "payments_seq", sequenceName = "payments_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payments_seq")
     private Long id;
@@ -30,11 +68,11 @@ public class Payment {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    @Column
-    private String method;
+    @Enumerated
+    private Method method;
 
-    @Column
-    private String status;
+    @Enumerated
+    private Status status;
 
     @Column
     private String date;
@@ -43,6 +81,6 @@ public class Payment {
     private String time;
 
     @Column
-    private String amount;
+    private double amount;
 
 }
