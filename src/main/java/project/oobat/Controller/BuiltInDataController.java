@@ -101,7 +101,7 @@ public class BuiltInDataController {
         // items4.put(product2, 1);
         // items4.put(product4, 3);
         Order order1 = new Order(new Payment(), user1, items2, Status.CART);
-        orderService.saveOrder(order1);
+        orderService.newCart(order1);
 
         
         
