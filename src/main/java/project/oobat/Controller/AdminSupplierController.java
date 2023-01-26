@@ -3,8 +3,10 @@ package project.oobat.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import project.oobat.Model.Supplier;
 import project.oobat.Service.SupplierService;
 
 @Controller
@@ -19,8 +21,9 @@ public class AdminSupplierController {
         return "admin/managesuppliers";
     }
 
-    @GetMapping("/add")
-    public String addSupplier() {
+    @PostMapping("/add")
+    public String addSupplier(Supplier supplier) {
+        supplierService.saveSupplier(supplier);
         return "admin/addsupplier";
     }
 
