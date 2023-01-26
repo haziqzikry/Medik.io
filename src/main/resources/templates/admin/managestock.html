@@ -75,7 +75,7 @@ F
     <div class="d-flex align-items-center justify-content-between">
        <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
          <img src="/img/logo.png" alt="">
-         <span class="d-none d-lg-block">OObat</span>
+         <span class="d-none d-lg-block text-white">OObat</span>
        </a>
        <i class="bi bi-list toggle-sidebar-btn"></i>
      </div><!-- End Logo -->
@@ -218,26 +218,17 @@ F
                 <div style="padding-right: 100px;">
                     <form  th:action="@{/admin/stock/add}" th:object="${stock}" method="post">
                   <table>
-                    <tr>
-                      <td>
-                          <div class="form-check">
-                          <input type="radio" class="form-check-input" name="action" value="Add Stock"  required>
-                          <label class="form-check-label" for="gridRadios1">Add Stock
-                          </div>
-                          <div class="form-check">
-                        <input type="radio"  class="form-check-input" name="action" value="Return Stock"><label class="form-check-label" for="gridRadios1">Return Stock
-                        </div>
-                      </td>
-                    </tr>
-              
+
                     <tr>
                          <td><label for="inputText" class="col-sm-auto col-form-label">Suppliers</label></td>
                     <td>:</td>
                       
                       <td>
                           <div class="col-sm-auto">
-                          <select class="form-select" aria-label="Default select example" name="supplier" >
-
+                          <select class="form-select"  aria-label="Default select example" name="supplier" >
+                            <option th:each="supplier : ${suppliers}" 
+                            th:value="${supplier.id}" 
+                            th:text="${supplier.name}"></option>
                         </select>
                            </div>
                       </td>
@@ -257,7 +248,9 @@ F
                       <td>
                           <div class="col-sm-auto">
                         <select name="product" class="form-select" aria-label="Default select example">
-      
+                          <option th:each="product : ${products}" 
+                          th:value="${product.id}" 
+                          th:text="${product.name}"></option>
                         </select>
                            </div>
                       </td>

@@ -33,6 +33,16 @@ public class StockService {
     }
 
     public void deleteStock(Stock stock) {
+        Product product = stock.getProduct();
+
+        if (stock.getQuantity() > product.getQuantity()) {
+            product.setQuantity(0);
+            productService.updateProduct(product);
+        } else {
+            // update product quantity
+            product.setQuantity(stock.getProduct().getQuantity() - stock.getQuantity());
+            productService.updateProduct(product);
+        }
         stockRepository.delete(stock);
     }
 }
