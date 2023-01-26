@@ -13,9 +13,15 @@ public class AdminStockController {
 
     @Autowired
     private StockService stockService;
-    
+
     @GetMapping("/manage")
     public String manageStock() {
         return "admin/managestock";
     }
+
+    @GetMapping("/add")
+    public String addStock() {
+        return "admin/addstock";
+    }
+
 }

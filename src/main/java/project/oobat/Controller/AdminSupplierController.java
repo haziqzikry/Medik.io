@@ -10,7 +10,7 @@ import project.oobat.Service.SupplierService;
 @Controller
 @RequestMapping("/admin/supplier")
 public class AdminSupplierController {
-    
+
     @Autowired
     private SupplierService supplierService;
 
@@ -18,4 +18,10 @@ public class AdminSupplierController {
     public String manageSupplier() {
         return "admin/managesuppliers";
     }
+
+    @GetMapping("/add")
+    public String addSupplier() {
+        return "admin/addsupplier";
+    }
+
 }
