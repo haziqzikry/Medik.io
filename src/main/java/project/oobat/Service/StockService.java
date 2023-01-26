@@ -9,7 +9,7 @@ import project.oobat.Repository.StockRepository;
 
 @Service
 public class StockService {
-    
+
     @Autowired
     private StockRepository stockRepository;
 
@@ -22,5 +22,17 @@ public class StockService {
         Product product = stock.getProduct();
         product.setQuantity(stock.getProduct().getQuantity() + stock.getQuantity());
         productService.updateProduct(product);
+    }
+
+    public Iterable<Stock> getAllStock() {
+        return stockRepository.findAll();
+    }
+
+    public Stock getStockbyID(Long id) {
+        return stockRepository.findById(id).get();
+    }
+
+    public void deleteStock(Stock stock) {
+        stockRepository.delete(stock);
     }
 }

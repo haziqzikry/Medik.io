@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,10 +34,11 @@ public class AdminSupplierController {
         return "redirect:/admin/supplier/manage";
     }
 
-    // @PostMapping("/delete")
-    // public String deleteSupplier(Supplier supplier) {
-    // supplierService.deleteSupplier(supplier);
-    // return "redirect:/admin/supplier/manage";
-    // }
+    @GetMapping("/delete/{id}")
+    public String removeFromCart(@PathVariable("id") Long suppliedId) {
+        Supplier supplier = supplierService.getSupplierbyID(suppliedId);
+        supplierService.deleteSupplier(supplier);
+        return "redirect:/admin/supplier/manage";
+    }
 
 }

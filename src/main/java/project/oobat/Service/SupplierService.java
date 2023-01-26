@@ -23,4 +23,8 @@ public class SupplierService {
     public Supplier getSupplierbyID(Long id) {
         return supplierRepository.findById(id).get();
     }
+
+    public void deleteSupplier(Supplier supplier) {
+        supplierRepository.delete(supplier);
+    }
 }
