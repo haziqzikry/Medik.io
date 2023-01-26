@@ -207,7 +207,7 @@
 
           <div class="card" style="width:1200px;">
             <div class="card-body" >
-              <h5 class="card-title"></h5>
+              <h5 class="card-title"> Add Supplier</h5>
 
 
 
@@ -291,7 +291,7 @@
 
           <div class="card" style="width:1200px;">
             <div class="card-body">
-                    
+
                 <a th:href="@{/admin/supplier/manage}">
                     <h5 class="card-title text-white"><i class="bi bi-arrow-repeat text-white"></i> Suppliers List</h5></a>
                 
@@ -303,8 +303,8 @@
                 </tr>
                      </thead>
                <tbody>
-                <tr th:each="supplier : ${suppliers}">
-                  <td th:text="${supplier.id}"></td>
+                <tr th:each="supplier, supplierStat : ${suppliers}">
+                  <td  th:text="${supplierStat.index}+1"></td>
                   <td th:text="${supplier.name}"></td>
                   <td th:text="${supplier.phone}"></td>
                   <td th:text="${supplier.address}"></td>
