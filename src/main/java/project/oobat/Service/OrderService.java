@@ -52,7 +52,7 @@ public class OrderService {
 
     public void addProductToCart(Product product, Long id) {
         Order order = getCartByUserId(id);
-        order.getProducts().add(product);
+        // order.getProducts().add(product);
         orderRepository.save(order);
     }
 

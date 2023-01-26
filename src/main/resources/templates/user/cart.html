@@ -202,11 +202,21 @@
               <th scope="col">Actions</th>
             </tr>
           </thead>
-          <tbody th:each="items : ${cart.getProducts}">
+          <tbody th:each="items : ${cart.getProducts.keySet()}">
             <tr>
                 <td th:text="${items.getName}"></td>
                 <td th:text="${items.getPrice}"></td>
-                <td>1</td>
+                <!-- quantity with button to increase or decrease -->
+                <td>
+                  <!-- quantity with button to increase or decrease -->
+                  <a th:href="@{/remove-quantity/cart/{product}(product=${items.getId})}" class="btn btn-sm ">
+                    <i class="bi bi-arrow-up-circle"></i>
+                  </a>
+                  <span th:text="${cart.getProducts.get(items)}"></span>
+                  <a th:href="@{/add-quantity/cart/{product}(product=${items.getId})}" class="btn btn-sm ">
+                    <i class="bi bi-arrow-down-circle"></i>
+                  </a>
+                </td>
                 <td th:text="${items.getPrice}"></td>
                 <td>
                   <a th:href="@{remove/cart/{product}(product=${items.getId})}" class="btn btn-sm btn-danger">
