@@ -2,6 +2,7 @@ package project.oobat.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +18,16 @@ public class AdminStockController {
     private StockService stockService;
 
     @GetMapping("/manage")
-    public String manageStock() {
+    public String manageStock(Model model) {
+        Stock stock = new Stock();
+        model.addAttribute("stock", stock);
         return "admin/managestock";
     }
 
     @PostMapping("/add")
     public String addStock(Stock stock) {
         stockService.saveStock(stock);
-        return "admin/addstock";
+        return "admin/managestock";
     }
 
 }
