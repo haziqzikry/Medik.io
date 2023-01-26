@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import project.oobat.Model.Supplier;
+import project.oobat.Repository.SupplierRepository;
 import project.oobat.Service.SupplierService;
 
 @Controller
@@ -21,13 +22,21 @@ public class AdminSupplierController {
     public String manageSupplier(Model model) {
         Supplier supplier = new Supplier();
         model.addAttribute("supplier", supplier);
+        Iterable<Supplier> suppliers = supplierService.getAllSuppliers();
+        model.addAttribute("suppliers", suppliers);
         return "admin/managesuppliers";
     }
 
     @PostMapping("/add")
     public String addSupplier(Supplier supplier) {
         supplierService.saveSupplier(supplier);
-        return "admin/managesuppliers";
+        return "redirect:/admin/supplier/manage";
     }
+
+    // @PostMapping("/delete")
+    // public String deleteSupplier(Supplier supplier) {
+    // supplierService.deleteSupplier(supplier);
+    // return "redirect:/admin/supplier/manage";
+    // }
 
 }

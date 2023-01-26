@@ -226,7 +226,8 @@
                       <td>:</td>
                       <td>
                           <div class="col-sm-12">
-                    <input type="text" class="form-control" name="suppliername" required>
+                    <input type="text" class="form-control"  th:name="name"
+                    th:field="*{name}" required>
                   </div>
                           
                       </td>
@@ -236,7 +237,8 @@
                       <td>:</td>
                       <td>
                       <div class="col-sm-12">
-                     <input type="text" class="form-control" name="contact" placeholder="01x-xxxxxxxx" pattern="01[0-9]{1}-[0-9]{7,8}" required>
+                     <input type="text" class="form-control" th:name="phone"
+                     th:field="*{phone}" placeholder="01x-xxxxxxxx" pattern="01[0-9]{1}-[0-9]{7,8}" required>
                      
                   </div>
                           </td>
@@ -246,7 +248,8 @@
                       <td>:</td>
                       <td>
                           <div class="col-sm-12">
-                     <textarea name="address" required class="form-control" style="height: 100px"></textarea>
+                     <textarea  th:name="address"
+                     th:field="*{address}"required class="form-control" style="height: 100px"></textarea>
                   </div>
                         
                       </td>
@@ -257,7 +260,8 @@
                       <td>:</td>
                       <td>
                           <div class="col-sm-12">
-                      <textarea name="email" required class="form-control" style="height: 100px"></textarea>
+                      <textarea th:name="email"
+                      th:field="*{email}" required class="form-control" style="height: 100px"></textarea>
 
                   </div>
                       </td>
@@ -274,7 +278,8 @@
                 <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i> New Suppliers</button>
                 
               </div>
- </form>
+        </form>
+
 
 
 
@@ -292,28 +297,34 @@
             <div class="card-body">
                     
                 <a th:href="@{/admin/supplier/manage}">
-                    <h5 class="card-title"><i class="bi bi-arrow-repeat"></i> Suppliers List</h5></a>
+                    <h5 class="card-title text-white"><i class="bi bi-arrow-repeat text-white"></i> Suppliers List</h5></a>
                 
               
-                 <table class="table table-borderless datatable" >
+                 <table class="table table-borderless datatable text-white" >
                      <thead>
                      <tr>
-              <th>No</th><th>Supplier Name</th><th>Supplier ID</th><th>Contact No</th><th>Address</th><th>Email</th><th>Action</th>
+              <th>No</th><th>Supplier Name</th><th>Contact No</th><th>Address</th><th>Email</th><th>Action</th>
                 </tr>
                      </thead>
-               
+               <tbody>
+                <tr th:each="supplier : ${suppliers}">
+                  <td th:text="${supplier.id}"></td>
+                  <td th:text="${supplier.name}"></td>
+                  <td th:text="${supplier.phone}"></td>
+                  <td th:text="${supplier.address}"></td>
+                  <td th:text="${supplier.email}"></td>
+                  <td>
+                      <a th:href="@{/admin/supplier/edit/{id}(id=${supplier.id})}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+                      <a th:href="@{/admin/supplier/delete/{id}(id=${supplier.id})}" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+                  </td>
+                </tr>
+              </tbody>
                  </table>
              
             </div>
           </div>
-
-
-
         </div>
 
-
-
-        </div>
       </div>
     </section>
 
