@@ -48,11 +48,23 @@ public class UserOrderController {
 
     @GetMapping("/add-quantity/cart/{product}")
     public String addQuantityToCart(@PathVariable("product") Long productId, Principal principal, Model model) {
+        // increase the quantity of the selected product in the cart
+        Order cart = orderService.getCartByUsername(principal.getName());
+        Product product = productService.getProductById(productId);
+        //products in cart is a map
+        cart.getProducts().put(product, cart.getProducts().get(product) + 1);
+        orderService.saveOrder(cart);
         return "redirect:/user/order/cart";
     }
 
     @GetMapping("/remove-quantity/cart/{product}")
     public String removeQuantityToCart(@PathVariable("product") Long productId, Principal principal, Model model) {
+       // decrease the quantity of the selected product in the cart
+        Order cart = orderService.getCartByUsername(principal.getName());
+        Product product = productService.getProductById(productId);
+        //products in cart is a map
+        cart.getProducts().put(product, cart.getProducts().get(product) - 1);
+        orderService.saveOrder(cart);
         return "redirect:/user/order/cart";
     }
 

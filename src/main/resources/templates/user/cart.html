@@ -209,15 +209,15 @@
                 <!-- quantity with button to increase or decrease -->
                 <td>
                   <!-- quantity with button to increase or decrease -->
-                  <a th:href="@{/remove-quantity/cart/{product}(product=${items.getId})}" class="btn btn-sm ">
-                    <i class="bi bi-arrow-up-circle"></i>
-                  </a>
-                  <span th:text="${cart.getProducts.get(items)}"></span>
-                  <a th:href="@{/add-quantity/cart/{product}(product=${items.getId})}" class="btn btn-sm ">
+                  <a th:href="@{remove-quantity/cart/{product}(product=${items.getId})}" class="btn btn-sm ">
                     <i class="bi bi-arrow-down-circle"></i>
                   </a>
+                  <span th:text="${cart.getProducts.get(items)}"></span>
+                  <a th:href="@{add-quantity/cart/{product}(product=${items.getId})}" class="btn btn-sm ">
+                    <i class="bi bi-arrow-up-circle"></i>
+                  </a>
                 </td>
-                <td th:text="${items.getPrice}"></td>
+                <td th:text="${items.getPrice * cart.getProducts.get(items)}"></td>
                 <td>
                   <a th:href="@{remove/cart/{product}(product=${items.getId})}" class="btn btn-sm btn-danger">
                     <i class="bi bi-trash"></i>

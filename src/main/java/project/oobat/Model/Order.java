@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.CollectionTable;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -73,6 +75,9 @@ public class Order {
     // private List<Product> products;
 
     @ElementCollection
+    @CollectionTable(name = "order_product", joinColumns = @JoinColumn(name = "order_id"))
+    @MapKeyJoinColumn(name = "product_id")
+    @Column(name = "quantity")
     private Map<Product, Integer> products = new HashMap<>();
 
     @Enumerated(EnumType.STRING)
