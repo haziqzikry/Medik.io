@@ -305,7 +305,7 @@
 
           <div class="card" style="width: 1300px;">
             <div class="card-body">
-                <a href="manageStock.html">
+                <a th:href="@{/admin/stock/manage}">
                     <h5 class="card-title"><i class="bi bi-arrow-repeat"></i> Stock Transaction</h5></a>
 
               <table class="table table-borderless datatable">
@@ -317,10 +317,6 @@
                   <th>Operation</th>
                   <th>Supplier Name</th>
                   <th>Product Name</th>
-                  <th>Product ID</th>
-
-                  <th>Cost<br>(RM)</th>
-
                   <th>Quantity</th>
                   <th>Action</th>
                 </tr>
