@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Manage Order Admin</title>
+    <title>Manage Order Customer</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -56,11 +56,11 @@
   </head>
 
   <body>
-    <!-- ======= Header ======= -->
+        <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-       <a href="index.html" class="logo d-flex align-items-center">
+       <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
          <img src="/img/logo.png" alt="">
          <span class="d-none d-lg-block">OObat</span>
        </a>
@@ -89,8 +89,7 @@
   
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                  <h6><jsp:getProperty name="user" property="full_name" /></h6>
-                <span><jsp:getProperty name="user" property="userType" /></span>
+                <h6><span sec:authentication="principal.name"></h6>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -122,7 +121,7 @@
               </li>
   
               <li>
-                <form action="login.html" method="post">
+                <form th:action="@{/logout}" method="post">
                 <div class="dropdown-item d-flex align-items-center">
                   <i class="bi bi-box-arrow-right"></i>
                   <input type="submit" value="Sign Out" style="background-color:transparent; border:0px solid transparent; padding-left:0px; width:100%; text-align:left;">
@@ -144,44 +143,33 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed " href="indexAdmin.jsp">
+        <a class="nav-link collapsed " th:href="@{/admin/home}" >
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link " href="ManageOrder.html">
+        <a class="nav-link collapsed" th:href="@{/admin/order/view}">
           <i class="bi bi-clipboard-check"></i>
-          <span>Manage Order</span>
+          <span>View Orders</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageProduct.html">
+        <a class="nav-link collapsed" th:href="@{/admin/product/view}">
            <i class='bx bxs-capsule'></i>
-          <span>Manage Product</span>
+          <span>View Products</span>
         </a>
       </li><!-- End Profile Page Nav -->
+      
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageCategory.html">
-          <i class="bi bi-grid"></i>
-          <span>Manage Category</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageStock.html">
-          <i class="bi bi-box"></i>
-          <span>Manage Stock</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageSuppliers.html">
-          <i class="bi bi-truck"></i>
-          <span>Manage Suppliers</span>
+        <a class="nav-link collapsed" th:href="@{/admin/order/cart}">
+          <i class="bi bi-cart"></i>
+          <span>View Cart</span>
         </a>
       </li><!-- End Profile Page Nav -->
     
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageProfile.html">
+        <a class="nav-link collapsed" th:href="@{/admin/profile}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
@@ -189,7 +177,6 @@
 
 
   </aside><!-- End Sidebar-->
-
     <main id="main" class="main">
       <section class="section">
         <div class="container">
@@ -215,29 +202,57 @@
             <li class="nav-item" role="presentation">
               <button
                 class="nav-link"
-                id="process-tab"
+                id="ship-tab"
                 data-bs-toggle="tab"
-                data-bs-target="#process"
+                data-bs-target="#ship"
                 type="button"
                 role="tab"
-                aria-controls="process"
+                aria-controls="ship"
                 aria-selected="false"
               >
-                Processing
+                To Ship
               </button>
             </li>
             <li class="nav-item" role="presentation">
               <button
                 class="nav-link"
-                id="contact-tab"
+                id="received-tab"
                 data-bs-toggle="tab"
-                data-bs-target="#contact"
+                data-bs-target="#received"
                 type="button"
                 role="tab"
-                aria-controls="contact"
+                aria-controls="received"
+                aria-selected="false"
+              >
+                To Received
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="completed-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#completed"
+                type="button"
+                role="tab"
+                aria-controls="completed"
                 aria-selected="false"
               >
                 Completed
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="Cancelled-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#Cancelled"
+                type="button"
+                role="tab"
+                aria-controls="Cancelled"
+                aria-selected="false"
+              >
+                Canceled
               </button>
             </li>
           </ul>
@@ -284,9 +299,10 @@
                     <td>02</td>
                     <td>Otto</td>
                     <td>
-                      <span class="badge bg-info text-dark">Processing</span>
+                      <span class="badge bg-info text-dark">To Ship</span>
                     </td>
                     <td>RM 25</td>
+
                     <td>
                       <a href="#" class="btn btn-sm">
                         <i class="bi bi-printer"></i>
@@ -301,6 +317,29 @@
                   </tr>
                   <tr>
                     <th scope="row">3</th>
+                    <td>02</td>
+                    <td>Otto</td>
+                    <td>
+                      <span class="badge bg-primary text-dark"
+                        >To Received</span
+                      >
+                    </td>
+                    <td>RM 25</td>
+
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
                     <td>03</td>
                     <td>Ottot</td>
                     <td><span class="badge bg-danger">Canceled</span></td>
@@ -322,9 +361,9 @@
             </div>
             <div
               class="tab-pane fade"
-              id="process"
+              id="ship"
               role="tabpanel"
-              aria-labelledby="process-tab"
+              aria-labelledby="ship-tab"
             >
               <table class="table datatable">
                 <thead>
@@ -344,7 +383,7 @@
                     <td>02</td>
                     <td>Otto</td>
                     <td>
-                      <span class="badge bg-info text-dark">Processing</span>
+                      <span class="badge bg-info text-dark">To Ship</span>
                     </td>
                     <td>RM 25</td>
 
@@ -365,9 +404,54 @@
             </div>
             <div
               class="tab-pane fade"
-              id="contact"
+              id="received"
               role="tabpanel"
-              aria-labelledby="contact-tab"
+              aria-labelledby="received-tab"
+            >
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">OrderID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total</th>
+
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>02</td>
+                    <td>Otto</td>
+                    <td>
+                      <span class="badge bg-primary text-dark"
+                        >To Received</span
+                      >
+                    </td>
+                    <td>RM 25</td>
+
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="completed"
+              role="tabpanel"
+              aria-labelledby="completed-tab"
             >
               <table class="table datatable">
                 <thead>
@@ -387,6 +471,46 @@
                     <td>01</td>
                     <td>Otto</td>
                     <td><span class="badge bg-success">Completed</span></td>
+                    <td>RM 100</td>
+                    <td>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-printer"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-eye-fill"></i>
+                      </a>
+                      <a href="#" class="btn btn-sm">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="Cancelled"
+              role="tabpanel"
+              aria-labelledby="completed-tab"
+            >
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">OrderID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total</th>
+
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>01</td>
+                    <td>Otto</td>
+                    <td><span class="badge bg-danger">Cancelled</span></td>
                     <td>RM 100</td>
                     <td>
                       <a href="#" class="btn btn-sm">
