@@ -202,9 +202,10 @@
                 <thead>
                   <tr>
                     <th scope="col">No</th>
-                    <th scope="col"> Amount</th>
+                    <th scope="col">Order Date</th>
                     <th scope="col">Payment Status</th>
                     <th scope="col">Payment Method</th>
+                    <th scope="col"> Amount</th>
                     <th scope="col">Status</th>
 
                   </tr>
@@ -212,9 +213,10 @@
                 <tbody>
                   <tr th:each="order, orderStat : ${orders}">
                     <td  th:text="${orderStat.index}+1"></td>
-                    <td th:text="${order.payment.amount}"></td>
+                    <td th:text="${order.payment.dateAdded}"></td>
                     <td th:text="${order.payment.status}"></td>
                     <td th:text="${order.payment.method}"></td>
+                    <td th:text="${order.payment.amount}"></td>
                     <td th:text="${order.status.status}"></td>
       
 
