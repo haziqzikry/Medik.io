@@ -133,44 +133,42 @@
     </header><!-- End Header -->
 
    <!-- ======= Sidebar ======= -->
+
+   <!-- ======= Sidebar ======= -->
    <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed " href="indexAdmin.jsp">
+        <a class="nav-link collapsed " th:href="@{/user/home}" >
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageOrder.html">
+        <a class="nav-link collapsed" th:href="@{/user/order/view}">
           <i class="bi bi-clipboard-check"></i>
-          <span>Manage Order</span>
+          <span>View Orders</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageProduct.html">
+        <a class="nav-link collapsed" th:href="@{/user/product/view}">
            <i class='bx bxs-capsule'></i>
-          <span>Manage Product</span>
+          <span>View Products</span>
         </a>
       </li><!-- End Profile Page Nav -->
+      
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageCategory.html">
-          <i class="bi bi-grid"></i>
-          <span>Manage Category</span>
+        <a class="nav-link collapsed" th:href="@{/user/order/cart}">
+          <i class="bi bi-cart"></i>
+          <span>View Cart</span>
         </a>
       </li><!-- End Profile Page Nav -->
+    
       <li class="nav-item">
-        <a class="nav-link collapsed " href="ManageStock.html">
-          <i class="bi bi-box"></i>
-          <span>Manage Stock</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageSuppliers.html">
-          <i class="bi bi-truck"></i>
-          <span>Manage Suppliers</span>
+        <a class="nav-link collapsed" th:href="@{/user/profile}">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
         </a>
       </li><!-- End Profile Page Nav -->
     
