@@ -62,8 +62,8 @@ public class BuiltInDataController {
         appUserService.registerPharmacist(user3);
 
         // CREATE PRODUCTS
-        Product product1 = new Product("Panadol", "For headache", 5.00, 0);
-        Product product2 = new Product("Paracetamol", "For fever", 3.00, 0);
+        Product product1 = new Product("Panadol", "For headache", 5.00, 0, "2022-12-27", true);
+        Product product2 = new Product("Paracetamol", "For fever", 3.00, 0, "2022-12-27", true);
         Product product3 = new Product("Vitamin C", "For cold", 2.00, 0);
         Product product4 = new Product("Vitamin D", "For bone", 2.00, 0);
         Product product5 = new Product("Vitamin E", "For skin", 2.00, 0);
