@@ -211,7 +211,7 @@ F
 
           <div class="card" style="width:1300px;">
             <div class="card-body" >
-              <h5 class="card-title"> Add Stock </h5>
+              <h5 class="card-title"> Update Stock </h5>
 
 
               <div style="display: flex; justify-content: left;">
@@ -219,6 +219,9 @@ F
                     <form  th:action="@{/admin/stock/add}" th:object="${stock}" method="post">
                   <table>
 
+                        <!-- add hidden form field to handle update-->
+                        <input type="hidden" th:name="id" th:value="${stock.id}" th:field="*{id}">
+                    
                     <tr>
                          <td><label for="inputText" class="col-sm-auto col-form-label">Suppliers</label></td>
                     <td>:</td>
@@ -279,6 +282,10 @@ F
               </div>
                </form>
 
+               <br><br>
+               <a th:href="@{/admin/stock/manage}" class="btn btn-primary"> Back to Stock List</a>
+
+
 
             </div>
 
@@ -287,55 +294,7 @@ F
         </div>
       </div>
       <!--Row 2-->
-      <div class="row">
-        <div class="col-lg-6">
-
-
-          <div class="card" style="width: 1300px;">
-            <div class="card-body">
-                <a th:href="@{/admin/stock/manage}">
-                    <h5 class="card-title text-white"><i class="bi bi-arrow-repeat"></i> Stock Transaction</h5></a>
-
-              <table class="table table-borderless datatable text-white">
-                  <thead>
-                  <tr>
-                  <th>
-                    No
-                  </th>
-                  <th>Supplier Name</th>
-                  <th>Product Name</th>
-                  <th>Quantity</th>
-                  <th>Date Added</th>
-                  <th>Action</th>
-                </tr>
-                  </thead>
-                  <tbody>
-                  <tr th:each="stock, stockStat: ${stocks}">
-                  <td th:text="${stockStat.index}+1"></td>
-                  <td th:text="${stock.supplier.name}"></td>
-                  <td th:text="${stock.product.name}"></td>
-                  <td th:text="${stock.quantity}"></td>
-                  <td th:text="${stock.dateAdded}"></td>
-                  <td>
-                    <a th:href="@{/admin/stock/update/{id}(id=${stock.id})}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
-                    <a th:href="@{/admin/stock/delete/{id}(id=${stock.id})}" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>                  </td>
-                </tr>
-                  </tbody>
-
-          
-              </table>
-
-            </div>
-          </div>
-
-
-
-        </div>
-
-
-
-        </div>
-      </div>
+     
     </section>
 
   </main><!-- End #main -->
