@@ -99,12 +99,29 @@ public class AdminProductController {
                 }
 
 
+                if(totalCummulative > 0){
 
-                totalData.add(totalCummulative);
-                activeData.add(active);
-                deletedData.add(deleted);
-                addedData.add(added);
-                xaxisCategories.add(new DateFormatSymbols().getMonths()[month-1] + "/" + year);
+                    if(totalData.size() == 0){
+                        totalData.add(0);
+                        activeData.add(0);
+                        deletedData.add(0);
+                        addedData.add(0);
+
+                        if(month == 1){
+                            xaxisCategories.add("December/" + (year-1));
+                        }
+                        else{
+                            xaxisCategories.add(new DateFormatSymbols().getMonths()[month-2] + "/" + year);
+                        }
+                    }
+
+                    totalData.add(totalCummulative);
+                    activeData.add(active);
+                    deletedData.add(deleted);
+                    addedData.add(added);
+                    xaxisCategories.add(new DateFormatSymbols().getMonths()[month-1] + "/" + year);
+                }
+                
             }
         }
         Map<String, Object> data = new HashMap<>();
