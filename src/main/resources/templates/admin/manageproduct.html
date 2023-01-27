@@ -46,17 +46,17 @@
     />
 
     <!-- Template Main CSS File -->
-    <link href="/css/aniqstyle.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
   </head>
 
   <body>
     <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
+   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
        <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
          <img src="/img/logo.png" alt="">
-         <span class="d-none d-lg-block">OObat</span>
+         <span class="d-none d-lg-block text-white">OObat</span>
        </a>
        <i class="bi bi-list toggle-sidebar-btn"></i>
      </div><!-- End Logo -->
@@ -84,31 +84,17 @@
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
                 <h6><span sec:authentication="principal.name"></h6>
+              </li>
               <li>
                 <hr class="dropdown-divider">
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="manageProfile.html">
+                <a class="dropdown-item d-flex align-items-center" th:href="@{/admin/profile}">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
               </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="manageProfile.html">
-                  <i class="bi bi-gear"></i>
-                  <span>Account Settings</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-             
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -130,8 +116,10 @@
   
     </header><!-- End Header -->
 
-   <!-- ======= Sidebar ======= -->
-   <aside id="sidebar" class="sidebar">
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -142,43 +130,37 @@
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/admin/manage-order}">
+        <a class="nav-link collapsed" th:href="@{/admin/order/manage}">
           <i class="bi bi-clipboard-check"></i>
           <span>Manage Order</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link " th:href="@{/admin/manage-product}">
+        <a class="nav-link collapsed" th:href="@{/admin/product/manage}">
            <i class='bx bxs-capsule'></i>
           <span>Manage Product</span>
         </a>
       </li><!-- End Profile Page Nav -->
+      
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageCategory.html">
-          <i class="bi bi-grid"></i>
-          <span>Manage Category</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/admin/manage-stock}">
+        <a class="nav-link collapsed" th:href="@{/admin/stock/manage}">
           <i class="bi bi-box"></i>
           <span>Manage Stock</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/admin/manage-supplier}">
+        <a class="nav-link collapsed" th:href="@{/admin/supplier/manage}">
           <i class="bi bi-truck"></i>
           <span>Manage Suppliers</span>
         </a>
       </li><!-- End Profile Page Nav -->
     
       <li class="nav-item">
-        <a class="nav-link collapsed" href="ManageProfile.html">
+        <a class="nav-link collapsed" th:href="@{/admin/profile}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
       </li><!-- End Profile Page Nav -->
-
 
   </aside><!-- End Sidebar-->
 
@@ -191,80 +173,6 @@
           </div>
           <!-- End Page Title -->
 
-          <button
-            class="btn btn-primary"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#addProductModal"
-          >
-            ADD PRODUCT
-          </button>
-
-          <!-- Table of product -->
-          <table class="table datatable">
-            <thead>
-              <tr>
-                <th scope="col">No</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Description</th>
-                <th scope="col">Date</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <th scope="row">6</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
-            </tbody>
-          </table>
-          <!-- End Table of product -->
           <div class="pagetitle">
             <h1>Add/Edit Products</h1>
           </div>
@@ -272,7 +180,7 @@
             <div class="col-xl-8">
               <div class="card">
                 <div class="card-body">
-                  <form th:action="@{/admin/add-product}" th:object="${product}" method="post" >
+                  <form th:action="@{/admin/product/add}" th:object="${product}" method="post" >
                     <div class="row">
                       <div class="col-md-6">
                         <div class="my-3">
@@ -290,7 +198,7 @@
                         <div class="my-3">
                           <label class="form-label">Price</label>
                           <input
-                            type="text"
+                            type="number"
                             class="form-control"
                             placeholder="Price"
                             th:name="price"
@@ -316,7 +224,7 @@
                         <div class="my-3">
                           <label class="form-label">Quantity</label>
                           <input
-                            type="text"
+                            type="number"
                             class="form-control"
                             placeholder="Quantity"
                             th:name="quantity"
@@ -349,6 +257,37 @@
               </div>
             </div>
           </div>
+          
+          <!-- Table of product -->
+          <table class="table datatable">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="product,iter : ${products}">
+                <th scope="row" th:text="${iter.index}+1"></th>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.quantity}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.dateAdded}"></td>
+                <td>
+                  <a th:href="@{/admin/product/edit/{id}(id=${product.id})}" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                  <a th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- End Table of product -->
+          
         </div>
       </section>
     </main>

@@ -45,8 +45,11 @@
       rel="stylesheet"
     />
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.7/dayjs.min.js"></script>
+
     <!-- Template Main CSS File -->
-    <link href="/css/aniqstyle.css" rel="stylesheet" />
+    <link href="/css/chart.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -179,12 +182,23 @@
   </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
-      <div class="pagetitle">
-        <h1>This is Index</h1>
-        <p>Index Pages</p>
-      </div>
-      <!-- End Page Title -->
-
+      <section class="section">
+        <div class="row">
+  
+          <div class="col-lg">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Product</h5>
+  
+                <!-- Line Chart -->
+                <div id="lineChart"></div>
+                <!-- End Line Chart -->
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
      
     </main>
     <a
@@ -205,6 +219,7 @@
 
     <!-- Template Main JS File -->
     <script src="/js/main.js"></script>
+    <script src="/js/chart.js"></script>
   </body>
 </html>
 
