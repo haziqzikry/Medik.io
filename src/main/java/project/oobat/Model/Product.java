@@ -62,4 +62,13 @@ public class Product {
         this.quantity = quantity;
     }
 
+
+    public Product(String name, String description, double price, int quantity, String dateAdded, boolean active) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.dateAdded = dateAdded;
+        this.active = active;
+    }
 }
