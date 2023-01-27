@@ -27,4 +27,8 @@ public class SupplierService {
     public void deleteSupplier(Supplier supplier) {
         supplierRepository.delete(supplier);
     }
+
+    public void updateSupplier(Supplier supplier) {
+        supplierRepository.save(supplier);
+    }
 }

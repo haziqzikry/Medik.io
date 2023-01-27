@@ -17,6 +17,7 @@ public class StockService {
     private ProductService productService;
 
     public void saveStock(Stock stock) {
+        stock.setDateAdded(java.time.LocalDate.now().toString());
         stockRepository.save(stock);
         // update product quantity
         Product product = stock.getProduct();

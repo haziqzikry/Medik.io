@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import project.oobat.Model.Supplier;
@@ -41,15 +43,13 @@ public class AdminSupplierController {
         return "redirect:/admin/supplier/manage";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editSupplier(@PathVariable("id") Long suppliedId, Model model) {
-        Supplier supplier = supplierService.getSupplierbyID(suppliedId);
-        model.addAttribute("supplier", supplier);
-        Iterable<Supplier> suppliers = supplierService.getAllSuppliers();
-        model.addAttribute("suppliers", suppliers);
-        supplierService.saveSupplier(supplier);
+    @GetMapping("/update/{id}")
+    public String updateSupplier(@PathVariable("id") Long suppliedId, Supplier supplier, Model model) {
+        Supplier supplierUpdate = supplierService.getSupplierbyID(suppliedId);
+        model.addAttribute("supplier", supplierUpdate);
+        return "admin/updatesuppliers";
 
-        return "admin/editsuppliers";
+      
     }
 
 }

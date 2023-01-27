@@ -207,7 +207,7 @@
 
           <div class="card" style="width:1200px;">
             <div class="card-body" >
-              <h5 class="card-title"> Edit Supplier</h5>
+              <h5 class="card-title"> Update Supplier</h5>
 
 
 
@@ -216,13 +216,13 @@
                     <form th:action="@{/admin/supplier/add}" th:object="${supplier}" method="post">
                   <table>
 
-
+                    <input type="hidden" th:name="id" th:value="${supplier.id}" th:field="*{id}">
                     <tr>
                       <td><label for="inputText" class="col-sm-auto col-form-label">Suppliers Name</label></td>
                       <td>:</td>
                       <td>
                           <div class="col-sm-12">
-                    <input type="text" class="form-control"  th:name="name"
+                    <input type="text" class="form-control" th:value="${supplier.name}" th:name="name"
                     th:field="*{name}" required>
                   </div>
                           
@@ -233,8 +233,8 @@
                       <td>:</td>
                       <td>
                       <div class="col-sm-12">
-                     <input type="text" class="form-control" th:name="phone"
-                     th:field="*{phone}" placeholder="01x-xxxxxxxx" pattern="01[0-9]{1}-[0-9]{7,8}" required>
+                     <input type="text" class="form-control" th:name="phone" th:value="${supplier.phone}"
+                     th:field="*{phone}" placeholder="01x-xxxxxxxx"  required>
                      
                   </div>
                           </td>
@@ -244,7 +244,7 @@
                       <td>:</td>
                       <td>
                           <div class="col-sm-12">
-                     <textarea  th:name="address"
+                     <textarea  th:name="address" th:value="${supplier.address}"
                      th:field="*{address}"required class="form-control" style="height: 100px"></textarea>
                   </div>
                         
@@ -256,7 +256,7 @@
                       <td>:</td>
                       <td>
                           <div class="col-sm-12">
-                      <textarea th:name="email"
+                      <textarea th:name="email" th:value="${supplier.email}"
                       th:field="*{email}" required class="form-control" style="height: 100px"></textarea>
 
                   </div>
@@ -271,10 +271,13 @@
               <br>
               <div>
                  <input type="reset" value="Reset" class="btn btn-outline-secondary">&nbsp;&nbsp;
-                <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i> Edit Suppliers</button>
+                <button type="submit" class="btn btn-primary"> Update Suppliers</button>
                 
               </div>
         </form>
+        <br>
+        <a th:href="@{/admin/supplier/manage}" class="btn btn-primary"> Back to Supplier List</a>
+
 
 
 
@@ -285,43 +288,7 @@
 
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-6">
-
-
-          <div class="card" style="width:1200px;">
-            <div class="card-body">
-
-                <a th:href="@{/admin/supplier/manage}">
-                    <h5 class="card-title text-white"><i class="bi bi-arrow-repeat text-white"></i> Suppliers List</h5></a>
-                
-              
-                 <table class="table table-borderless datatable text-white" >
-                     <thead>
-                     <tr>
-              <th>No</th><th>Supplier Name</th><th>Contact No</th><th>Address</th><th>Email</th><th>Action</th>
-                </tr>
-                     </thead>
-               <tbody>
-                <tr th:each="supplier, supplierStat : ${suppliers}">
-                  <td  th:text="${supplierStat.index}+1"></td>
-                  <td th:text="${supplier.name}"></td>
-                  <td th:text="${supplier.phone}"></td>
-                  <td th:text="${supplier.address}"></td>
-                  <td th:text="${supplier.email}"></td>
-                  <td>
-                      <a th:href="@{/admin/supplier/edit/{id}(id=${supplier.id})}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
-                      <a th:href="@{/admin/supplier/delete/{id}(id=${supplier.id})}" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
-                  </td>
-                </tr>
-              </tbody>
-                 </table>
-             
-            </div>
-          </div>
-        </div>
-
-      </div>
+     
     </section>
 
   </main><!-- End #main -->
@@ -347,8 +314,6 @@
     <!-- Template Main JS File -->
     <script src="/js/main.js"></script>
 
-   
-  
 
 </body>
 

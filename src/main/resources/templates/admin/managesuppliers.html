@@ -222,7 +222,7 @@
                       <td>:</td>
                       <td>
                           <div class="col-sm-12">
-                    <input type="text" class="form-control"  th:name="name"
+                    <input type="text" class="form-control" th:value="${supplier.name}" th:name="name"
                     th:field="*{name}" required>
                   </div>
                           
@@ -233,8 +233,8 @@
                       <td>:</td>
                       <td>
                       <div class="col-sm-12">
-                     <input type="text" class="form-control" th:name="phone"
-                     th:field="*{phone}" placeholder="01x-xxxxxxxx" pattern="01[0-9]{1}-[0-9]{7,8}" required>
+                     <input type="text" class="form-control" th:name="phone" th:value="${supplier.phone}"
+                     th:field="*{phone}" placeholder="01x-xxxxxxxx"  required>
                      
                   </div>
                           </td>
@@ -244,7 +244,7 @@
                       <td>:</td>
                       <td>
                           <div class="col-sm-12">
-                     <textarea  th:name="address"
+                     <textarea  th:name="address" th:value="${supplier.address}"
                      th:field="*{address}"required class="form-control" style="height: 100px"></textarea>
                   </div>
                         
@@ -256,7 +256,7 @@
                       <td>:</td>
                       <td>
                           <div class="col-sm-12">
-                      <textarea th:name="email"
+                      <textarea th:name="email" th:value="${supplier.email}"
                       th:field="*{email}" required class="form-control" style="height: 100px"></textarea>
 
                   </div>
@@ -310,7 +310,7 @@
                   <td th:text="${supplier.address}"></td>
                   <td th:text="${supplier.email}"></td>
                   <td>
-                      <a id= "editbtn" th:href="@{/admin/supplier/edit/{id}(id=${supplier.id})}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+                      <a  th:href="@{/admin/supplier/update/{id}(id=${supplier.id})}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
                       <a th:href="@{/admin/supplier/delete/{id}(id=${supplier.id})}" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
@@ -346,27 +346,6 @@
 
     <!-- Template Main JS File -->
     <script src="/js/main.js"></script>
-
-    //make a an operation when user clicks the edit action, it will prompt a way to edit the data in the table
-
-    <script>
-        $(document).ready(function(){
-            $('.editbtn').on('click', function(){
-                $('#editModal').modal('show');
-                $tr = $(this).closest('tr');
-                var data = $tr.children("td").map(function(){
-                    return $(this).text();
-                }).get();
-                console.log(data);
-                $('#update_id').val(data[0]);
-                $('#name').val(data[1]);
-                $('#phone').val(data[2]);
-                $('#address').val(data[3]);
-                $('#email').val(data[4]);
-            });
-        });
-    </script>
-  
 
 </body>
 
