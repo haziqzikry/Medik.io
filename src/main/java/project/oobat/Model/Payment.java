@@ -23,43 +23,42 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Payment {
 
-    public static enum Status{
+    public static enum Status {
         PENDING("PENDING"),
         COMPLETED("COMPLETED"),
         CANCELLED("CANCELLED");
 
         private String status;
 
-        private Status(String status){
+        private Status(String status) {
             this.status = status;
         }
 
-        public String getStatus(){
+        public String getStatus() {
             return status;
         }
 
     }
 
-    public static enum Method{
+    public static enum Method {
         CASH("CASH"),
         CARD("CARD"),
         EWALLET("EWALLET");
 
         private String method;
 
-        private Method(String method){
+        private Method(String method) {
             this.method = method;
         }
 
-        public String getMethod(){
+        public String getMethod() {
             return method;
         }
 
     }
 
-
-
-    @Id @SequenceGenerator(name = "payments_seq", sequenceName = "payments_seq", allocationSize = 1)
+    @Id
+    @SequenceGenerator(name = "payments_seq", sequenceName = "payments_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payments_seq")
     private Long id;
 
@@ -74,8 +73,9 @@ public class Payment {
     @Enumerated
     private Status status;
 
-    @Column
-    private String date;
+    // column for date added with default value of current date
+    @Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")
+    private String dateAdded;
 
     @Column
     private String time;

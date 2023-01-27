@@ -13,12 +13,12 @@ public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    public void newPayment(Order order){
+    public void newPayment(Order order) {
         Payment payment = order.getPayment();
         double payAmount = 0;
         // loop order product list
-        for (Product p: order.getProducts().keySet()){
-            payAmount =+ p.getPrice();
+        for (Product p : order.getProducts().keySet()) {
+            payAmount = +p.getPrice();
         }
         payment.setAmount(payAmount);
         // payment.setOrder(order);
@@ -39,6 +39,8 @@ public class PaymentService {
         paymentRepository.deleteById(id);
     }
 
-    
+    public Iterable<Payment> getAllPayment() {
+        return paymentRepository.findAll();
+    }
 
 }
