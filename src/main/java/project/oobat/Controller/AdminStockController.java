@@ -56,4 +56,12 @@ public class AdminStockController {
         stockService.deleteStock(stock);
         return "redirect:/admin/stock/manage";
     }
+
+    @GetMapping("/update/{id}")
+    public String updateStock(@PathVariable("id") Long stockId, Stock stock, Model model) {
+        Stock stockUpdate = stockService.getStockbyID(stockId);
+        model.addAttribute("stock", stockUpdate);
+        return "admin/updatestock";
+
+    }
 }

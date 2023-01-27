@@ -46,4 +46,8 @@ public class StockService {
         }
         stockRepository.delete(stock);
     }
+
+    public void updateStock(Stock stock) {
+        stockRepository.save(stock);
+    }
 }

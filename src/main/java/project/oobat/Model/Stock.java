@@ -44,11 +44,11 @@ public class Stock {
     @JoinColumn(name = "appuser_id")
     private AppUser appuser;
 
+    private int quantity;
+
     // column for date added with default value of current date
     @Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")
     private String dateAdded;
-
-    private int quantity;
 
     // constructor without id
     public Stock(Product product, Supplier supplier, AppUser appuser, int quantity) {
@@ -56,7 +56,6 @@ public class Stock {
         this.supplier = supplier;
         this.appuser = appuser;
         this.quantity = quantity;
-
     }
 
 }

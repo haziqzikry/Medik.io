@@ -216,7 +216,9 @@
                     <form th:action="@{/admin/supplier/add}" th:object="${supplier}" method="post">
                   <table>
 
+                    <!-- add hidden form field to handle update-->
                     <input type="hidden" th:name="id" th:value="${supplier.id}" th:field="*{id}">
+                    
                     <tr>
                       <td><label for="inputText" class="col-sm-auto col-form-label">Suppliers Name</label></td>
                       <td>:</td>
