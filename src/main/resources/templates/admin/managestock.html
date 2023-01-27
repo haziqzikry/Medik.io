@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
 
 <head>
   <meta charset="utf-8">
@@ -209,7 +209,7 @@ F
 
 
 
-          <div class="card" style="width:1300px;">
+          <div class="card" >
             <div class="card-body" >
               <h5 class="card-title"> Add Stock </h5>
 
@@ -242,7 +242,7 @@ F
                     
                   
                     <tr>
-                               <td><label for="inputText" class="col-sm-auto col-form-label">Product Name</label></td>
+                    <td><label for="inputText" class="col-sm-auto col-form-label">Product Name</label></td>
                     <td>:</td>
                     
                       <td>
@@ -264,7 +264,7 @@ F
                      
                       <td>
                            <div class="col-sm-auto">
-                        <input type="number" class="form-control" name="quantity" step="1" min="1"  required>
+                        <input type="number" class="form-control" name="quantity"   step="1" min="1"  required>
                           </div>
                       </td>
                     </tr>
@@ -288,10 +288,10 @@ F
       </div>
       <!--Row 2-->
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
 
 
-          <div class="card" style="width: 1300px;">
+          <div class="card " >
             <div class="card-body">
                 <a th:href="@{/admin/stock/manage}">
                     <h5 class="card-title text-white"><i class="bi bi-arrow-repeat"></i> Stock Transaction</h5></a>
@@ -310,19 +310,20 @@ F
                 </tr>
                   </thead>
                   <tbody>
-                  <tr th:each="stock, stockStat: ${stocks}">
-                  <td th:text="${stockStat.index}+1"></td>
-                  <td th:text="${stock.supplier.name}"></td>
-                  <td th:text="${stock.product.name}"></td>
-                  <td th:text="${stock.quantity}"></td>
+                  <tr th:each="stock,stockStat  : ${stocks}">
+                    <td  th:text="${stockStat.index}+1"></td>
+                    <td th:if="${stock.supplier != null}" th:text="${stock.supplier.name}"></td>
+                    <td th:if="${stock.product != null}" th:text="${stock.product.name}"></td>
+
+                    <td th:text="${stock.quantity}"></td>
                   <td th:text="${stock.dateAdded}"></td>
                   <td>
-                    <a th:href="@{/admin/stock/update/{id}(id=${stock.id})}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
-                    <a th:href="@{/admin/stock/delete/{id}(id=${stock.id})}" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>                  </td>
-                </tr>
-                  </tbody>
+                    <a  th:href="@{/admin/stock/update/{id}(id=${stock.id})}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+                    <a th:href="@{/admin/stock/delete/{id}(id=${stock.id})}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
 
-          
+
+                    </tbody>
+  
               </table>
 
             </div>
