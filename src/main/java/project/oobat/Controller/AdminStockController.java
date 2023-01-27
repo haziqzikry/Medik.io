@@ -1,7 +1,6 @@
 package project.oobat.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,16 +50,22 @@ public class AdminStockController {
     }
 
     @GetMapping("/delete/{id}")
-    public String removeFromCart(@PathVariable("id") Long stockId) {
+    public String removefromStock(@PathVariable("id") Long stockId) {
         Stock stock = stockService.getStockbyID(stockId);
         stockService.deleteStock(stock);
         return "redirect:/admin/stock/manage";
     }
 
     @GetMapping("/update/{id}")
-    public String updateStock(@PathVariable("id") Long stockId, Stock stock, Model model) {
+    public String updateStock(@PathVariable("id") Long stockId, Stock stock, Supplier supplier, Product product,
+            Model model) {
         Stock stockUpdate = stockService.getStockbyID(stockId);
         model.addAttribute("stock", stockUpdate);
+        Iterable<Supplier> suppliers = supplierService.getAllSuppliers();
+        model.addAttribute("suppliers", suppliers);
+        Iterable<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+
         return "admin/updatestock";
 
     }

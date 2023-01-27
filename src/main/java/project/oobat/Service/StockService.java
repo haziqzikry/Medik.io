@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import project.oobat.Model.Product;
 import project.oobat.Model.Stock;
+import project.oobat.Model.Supplier;
+
 import project.oobat.Repository.StockRepository;
 
 @Service
@@ -15,6 +17,9 @@ public class StockService {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private SupplierService supplierService;
 
     public void saveStock(Stock stock) {
         stock.setDateAdded(java.time.LocalDate.now().toString());

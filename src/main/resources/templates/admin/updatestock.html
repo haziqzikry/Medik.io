@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
 
 <head>
   <meta charset="utf-8">
@@ -221,7 +221,7 @@ F
 
                         <!-- add hidden form field to handle update-->
                         <input type="hidden" th:name="id" th:value="${stock.id}" th:field="*{id}">
-                    
+
                     <tr>
                          <td><label for="inputText" class="col-sm-auto col-form-label">Suppliers</label></td>
                     <td>:</td>
