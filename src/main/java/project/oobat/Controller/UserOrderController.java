@@ -36,8 +36,6 @@ public class UserOrderController {
         model.addAttribute("order", order);
         Iterable<Order> orders = orderService.getAllOrder();
         model.addAttribute("orders", orders);
-        Iterable<Product> products = productService.getActiveProducts();
-        model.addAttribute("products", products);
         Iterable<Payment> payments = paymentService.getAllPayment();
         model.addAttribute("payments", payments);
 
