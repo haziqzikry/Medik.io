@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import project.oobat.Model.AppUser;
+import project.oobat.Model.Product;
 import project.oobat.Service.AppUserService;
+import project.oobat.Service.ProductService;
 
 @Controller
 @RequestMapping("/admin")
@@ -19,8 +21,13 @@ public class AdminController {
     @Autowired
     private AppUserService appUserService;
 
+    @Autowired
+    private ProductService productService;
+
     @GetMapping("/home")
-    public String home() {
+    public String home(Model model) {
+        Iterable<Product> products = productService.getActiveProducts();
+        model.addAttribute("products", products);
         return "admin/home";
     }
 

@@ -186,13 +186,30 @@
       <section class="section">
         <div class="row">
   
-          <div class="col-lg">
+          <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Product</h5>
+                <h5 class="card-title my-3">Product</h5>
   
                 <!-- Line Chart -->
                 <div id="lineChart"></div>
+                <!-- End Line Chart -->
+  
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <select id="product" class="form-select my-4" aria-label="Default select example">
+                  <option th:each="product : ${products}" 
+                  th:value="${product.id}" 
+                  th:text="${product.name}"></option>
+                </select>
+  
+                <!-- Line Chart -->
+                <div id="stockChart"></div>
                 <!-- End Line Chart -->
   
               </div>
@@ -220,6 +237,7 @@
 
     <!-- Template Main JS File -->
     <script src="/js/main.js"></script>
-    <script src="/js/chart.js"></script>
+    <script src="/js/productChart.js"></script>
+    <script src="/js/stockChart.js"></script>
   </body>
 </html>

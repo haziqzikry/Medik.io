@@ -265,7 +265,7 @@
                       <tr th:each="product,iter : ${products}">
                         <th scope="row" th:text="${iter.index}+1"></th>
                         <td th:text="${product.name}"></td>
-                        <td th:text="${product.price}"></td>
+                        <td th:text="${'RM'+ #numbers.formatDecimal(product.price, 0, 2)}"></td>
                         <td th:text="${product.quantity}"></td>
                         <td th:text="${product.description}"></td>
                         <td th:text="${product.dateAdded}"></td>
