@@ -207,7 +207,7 @@
 
           <div class="card" style="width:1200px;">
             <div class="card-body" >
-              <h5 class="card-title"> Add Supplier</h5>
+              <h5 class="card-title"> Edit Supplier</h5>
 
 
 
@@ -271,7 +271,7 @@
               <br>
               <div>
                  <input type="reset" value="Reset" class="btn btn-outline-secondary">&nbsp;&nbsp;
-                <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i> New Suppliers</button>
+                <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i> Edit Suppliers</button>
                 
               </div>
         </form>
@@ -310,7 +310,7 @@
                   <td th:text="${supplier.address}"></td>
                   <td th:text="${supplier.email}"></td>
                   <td>
-                      <a id= "editbtn" th:href="@{/admin/supplier/edit/{id}(id=${supplier.id})}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+                      <a th:href="@{/admin/supplier/edit/{id}(id=${supplier.id})}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
                       <a th:href="@{/admin/supplier/delete/{id}(id=${supplier.id})}" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
                   </td>
                 </tr>
@@ -347,25 +347,7 @@
     <!-- Template Main JS File -->
     <script src="/js/main.js"></script>
 
-    //make a an operation when user clicks the edit action, it will prompt a way to edit the data in the table
-
-    <script>
-        $(document).ready(function(){
-            $('.editbtn').on('click', function(){
-                $('#editModal').modal('show');
-                $tr = $(this).closest('tr');
-                var data = $tr.children("td").map(function(){
-                    return $(this).text();
-                }).get();
-                console.log(data);
-                $('#update_id').val(data[0]);
-                $('#name').val(data[1]);
-                $('#phone').val(data[2]);
-                $('#address').val(data[3]);
-                $('#email').val(data[4]);
-            });
-        });
-    </script>
+   
   
 
 </body>

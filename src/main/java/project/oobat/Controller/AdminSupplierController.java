@@ -35,10 +35,21 @@ public class AdminSupplierController {
     }
 
     @GetMapping("/delete/{id}")
-    public String removeFromCart(@PathVariable("id") Long suppliedId) {
+    public String removefromSuppliers(@PathVariable("id") Long suppliedId) {
         Supplier supplier = supplierService.getSupplierbyID(suppliedId);
         supplierService.deleteSupplier(supplier);
         return "redirect:/admin/supplier/manage";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editSupplier(@PathVariable("id") Long suppliedId, Model model) {
+        Supplier supplier = supplierService.getSupplierbyID(suppliedId);
+        model.addAttribute("supplier", supplier);
+        Iterable<Supplier> suppliers = supplierService.getAllSuppliers();
+        model.addAttribute("suppliers", suppliers);
+        supplierService.saveSupplier(supplier);
+
+        return "admin/editsuppliers";
     }
 
 }
