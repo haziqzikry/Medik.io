@@ -37,7 +37,7 @@ public class AdminStockController {
         model.addAttribute("stocks", stocks);
         Iterable<Supplier> suppliers = supplierService.getAllSuppliers();
         model.addAttribute("suppliers", suppliers);
-        Iterable<Product> products = productService.getAllProducts();
+        Iterable<Product> products = productService.getActiveProducts();
         model.addAttribute("products", products);
 
         return "admin/managestock";
@@ -63,7 +63,7 @@ public class AdminStockController {
         model.addAttribute("stock", stockUpdate);
         Iterable<Supplier> suppliers = supplierService.getAllSuppliers();
         model.addAttribute("suppliers", suppliers);
-        Iterable<Product> products = productService.getAllProducts();
+        Iterable<Product> products = productService.getActiveProducts();
         model.addAttribute("products", products);
 
         return "admin/updatestock";

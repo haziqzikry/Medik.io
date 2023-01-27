@@ -22,12 +22,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    
-    @Id @SequenceGenerator(name = "products_seq", sequenceName = "products_seq", allocationSize = 1)
+
+    @Id
+    @SequenceGenerator(name = "products_seq", sequenceName = "products_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "products_seq")
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
@@ -53,7 +54,7 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Stock> stocks;
 
-    //constructor without id and date
+    // constructor without id and date
     public Product(String name, String description, double price, int quantity) {
         this.name = name;
         this.description = description;
