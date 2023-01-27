@@ -26,8 +26,11 @@ public class ProductService {
 
     public void saveProduct(Product product) {
         // set product date added to today
-        product.setDateAdded(java.time.LocalDate.now().toString());
-        product.setActive(true);
+        if(product.getDateAdded() == null) {
+            product.setDateAdded(java.time.LocalDate.now().toString());
+            product.setActive(true);
+        }
+        
         productRepository.save(product);
     }
 

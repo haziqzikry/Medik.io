@@ -129,4 +129,11 @@ public class AdminProductController {
         productService.deleteProduct(product);
         return "redirect:/admin/product/manage";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editProduct(@PathVariable Long id, Model model) {
+        Product product = productService.getProductById(id);
+        model.addAttribute("product", product);
+        return "admin/updateproduct";
+    }
 }
