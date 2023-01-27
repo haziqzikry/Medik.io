@@ -8,4 +8,5 @@ import project.oobat.Model.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
     
+    public Iterable<Product> findByActive(boolean active);
 }

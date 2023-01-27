@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -97,11 +98,11 @@ public class BuiltInDataController {
         // items1.add(product7);
         List<Product> items2 = new ArrayList<>(Arrays.asList(product1, product2, product4));
         List<Product> items3 = new ArrayList<>(Arrays.asList(product2, product6));
-        // HashMap<Product, Integer> items4 = new HashMap<>();
-        // items4.put(product2, 1);
-        // items4.put(product4, 3);
-        Order order1 = new Order(new Payment(), user1, items2, Status.CART);
-        orderService.saveOrder(order1);
+        Map<Product, Integer> items4 = new HashMap<>();
+        items4.put(product2, 1);
+        items4.put(product4, 3);
+        Order order1 = new Order(new Payment(), user1, items4, Status.CART);
+        orderService.newCart(order1);
 
         
         

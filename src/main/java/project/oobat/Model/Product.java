@@ -1,5 +1,6 @@
 package project.oobat.Model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -37,6 +38,12 @@ public class Product {
 
     @Column(nullable = false)
     private int quantity;
+
+    @Column(nullable = false)
+    private boolean active;
+
+    @Column(columnDefinition = "DATE")
+    private String dateDeleted;
 
     // column for date added with default value of current date
     @Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")

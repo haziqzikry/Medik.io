@@ -17,7 +17,7 @@ public class PaymentService {
         Payment payment = order.getPayment();
         double payAmount = 0;
         // loop order product list
-        for (Product p: order.getProducts()){
+        for (Product p: order.getProducts().keySet()){
             payAmount =+ p.getPrice();
         }
         payment.setAmount(payAmount);
