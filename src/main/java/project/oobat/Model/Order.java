@@ -1,9 +1,14 @@
 package project.oobat.Model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.CollectionTable;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -62,12 +67,18 @@ public class Order {
     @JoinColumn(name = "user_id")
     private AppUser user;
 
-    @ManyToMany
-    @JoinTable(
-        name = "order_product", 
-        joinColumns = @JoinColumn(name = "order_id"), 
-        inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> products;
+    // @ManyToMany
+    // @JoinTable(
+    //     name = "order_product", 
+    //     joinColumns = @JoinColumn(name = "order_id"), 
+    //     inverseJoinColumns = @JoinColumn(name = "product_id"))
+    // private List<Product> products;
+
+    @ElementCollection
+    @CollectionTable(name = "order_product", joinColumns = @JoinColumn(name = "order_id"))
+    @MapKeyJoinColumn(name = "product_id")
+    @Column(name = "quantity")
+    private Map<Product, Integer> products = new HashMap<>();
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -77,11 +88,23 @@ public class Order {
     private String date;
 
     // constructor without id
-    public Order(Payment payment, AppUser user, List<Product> products, Status status) {
+    public Order(Payment payment, AppUser user, Map<Product, Integer> products, Status status) {
         this.payment = payment;
         this.user = user;
         this.products = products;
         this.status = status;
     }
+
+    // public void addProduct(Product product, int quantity) {
+    //     products.put(product, quantity);
+    // }
+    
+    // public void removeProduct(Product product) {
+    //     products.remove(product);
+    // }
+    
+    // public void updateProductQuantity(Product product, int newQuantity) {
+    //     products.put(product, newQuantity);
+    // }
 
 }

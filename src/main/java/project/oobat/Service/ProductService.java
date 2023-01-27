@@ -16,14 +16,21 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public Iterable<Product> getActiveProducts() {
+        return productRepository.findByActive(true);
+    }
+
     public Product getProductById(Long id) {
         return productRepository.findById(id).get();
     }
 
     public void saveProduct(Product product) {
         // set product date added to today
-        product.setDateAdded(java.time.LocalDate.now().toString());
-        product.setQuantity(0);
+        if(product.getDateAdded() == null) {
+            product.setDateAdded(java.time.LocalDate.now().toString());
+            product.setActive(true);
+        }
+        
         productRepository.save(product);
     }
 
@@ -32,7 +39,9 @@ public class ProductService {
     }
 
     public void deleteProduct(Product product) {
-        productRepository.delete(product);
+        product.setActive(false);
+        product.setDateDeleted(java.time.LocalDate.now().toString());
+        productRepository.save(product);
     }
 
 }
