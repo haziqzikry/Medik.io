@@ -32,10 +32,15 @@ public class UserController {
     }
 
     @PostMapping("/profile")
-    public String profile(AppUser appUser) {
-        appUserService.updateProfile(appUser);
+    public String profile(AppUser appUser, Principal principal) {
+        AppUser updatedUser = appUserService.loadUserByUsername(principal.getName());
+        updatedUser.setName(appUser.getName());
+        updatedUser.setAddress(appUser.getAddress());
+        updatedUser.setPhone(appUser.getPhone());
+        updatedUser.setEmail(appUser.getEmail());
+        appUserService.updateProfile(updatedUser);
 
-        return "redirect:user/profile";
+        return "redirect:/user/profile";
     }
 
 }

@@ -209,6 +209,24 @@
                     <form th:object="${user}" th:action="@{profile}" method="post" >
                       <div class="row mb-3">
                         <label
+                          for="username"
+                          class="col-md-4 col-lg-3 col-form-label"
+                          >Username</label
+                        >
+                        <div class="col-md-8 col-lg-9">
+                          <input
+                            name="username"
+                            type="text"
+                            class="form-control"
+                            id="username"
+                            th:value="${user.username}"
+                            th:field="*{username}"
+                            th:name="username"
+                          />
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label
                           for="fullName"
                           class="col-md-4 col-lg-3 col-form-label"
                           >Full Name</label
@@ -239,6 +257,8 @@
                             class="form-control"
                             id="Email"
                             th:value="${user.email}"
+                            th:field="*{email}"
+                            th:name="email"
                           />
                         </div>
                       </div>
@@ -255,6 +275,8 @@
                             class="form-control"
                             id="Phone"
                             th:value="${user.phone}"
+                            th:field="*{phone}"
+                            th:name="phone"
                           />
                         </div>
                       </div>
@@ -271,6 +293,28 @@
                             class="form-control"
                             id="Address"
                             th:value="${user.address}"
+                            th:field="*{address}"
+                            th:name="address"
+                          />
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label
+                          for="Password"
+                          class="col-md-4 col-lg-3 col-form-label"
+                          >Password</label
+                        >
+                        <div class="col-md-8 col-lg-9">
+                          <input
+                            name="password"
+                            type="text"
+                            class="form-control"
+                            id="Password"
+                            th:value="${user.password}"
+                            th:field="*{password}"
+                            th:name="password"
+                            disabled
+                            hidden
                           />
                         </div>
                       </div>
@@ -287,11 +331,12 @@
                           class="form-control"
                           id="Role"
                           th:value="${user.role}"
+                          th:field="*{role}"
+                          th:name="role"
                           disabled
                         />
                       </div>
                       </div>
-
                       <div class="text-center">
                         <button type="submit" class="btn btn-primary">
                           Update Profile

@@ -62,4 +62,5 @@ public class AppUserService implements UserDetailsService {
     public void updateProfile(AppUser appUser) {
         appUserRepository.save(appUser);
     }
+
 }
