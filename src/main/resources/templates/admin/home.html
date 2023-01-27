@@ -141,28 +141,34 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed " th:href="@{/admin/home}" >
+        <a class="nav-link collapsed " th:href="@{/admin/home}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/admin/order/view}">
+        <a class="nav-link collapsed" th:href="@{/admin/order/manage}">
           <i class="bi bi-clipboard-check"></i>
-          <span>View Orders</span>
+          <span>Manage Order</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/admin/product/view}">
+        <a class="nav-link collapsed" th:href="@{/admin/product/manage}">
            <i class='bx bxs-capsule'></i>
-          <span>View Products</span>
+          <span>Manage Product</span>
         </a>
       </li><!-- End Profile Page Nav -->
       
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/admin/order/cart}">
-          <i class="bi bi-cart"></i>
-          <span>View Cart</span>
+        <a class="nav-link collapsed" th:href="@{/admin/stock/manage}">
+          <i class="bi bi-box"></i>
+          <span>Manage Stock</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/admin/supplier/manage}">
+          <i class="bi bi-truck"></i>
+          <span>Manage Suppliers</span>
         </a>
       </li><!-- End Profile Page Nav -->
     
@@ -177,7 +183,6 @@
   </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
-
       <section class="section">
         <div class="row">
   
@@ -195,7 +200,6 @@
           </div>
         </div>
       </section>
-
      
     </main>
     <a
@@ -219,4 +223,3 @@
     <script src="/js/chart.js"></script>
   </body>
 </html>
-
