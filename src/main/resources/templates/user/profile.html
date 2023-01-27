@@ -184,11 +184,11 @@
                   <div class="tab-content" id="profile-overview">
                     <form th:object="${user}" th:action="@{profile}" method="post" >
                       <div class="row mb-3">
-                        <label
+                        <!-- <label
                           for="username"
                           class="col-md-4 col-lg-3 col-form-label"
                           >Username</label
-                        >
+                        > -->
                         <div class="col-md-8 col-lg-9">
                           <input
                             name="username"
@@ -198,6 +198,7 @@
                             th:value="${user.username}"
                             th:field="*{username}"
                             th:name="username"
+                            hidden
                           />
                         </div>
                       </div>
@@ -274,7 +275,7 @@
                           />
                         </div>
                       </div>
-                      <div class="row mb-3">
+                      <!-- <div class="row mb-3">
                         <label
                           for="Password"
                           class="col-md-4 col-lg-3 col-form-label"
@@ -293,7 +294,7 @@
                             hidden
                           />
                         </div>
-                      </div>
+                      </div> -->
                       <div class="row mb-3">
                         <label
                         for="Address"
