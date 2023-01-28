@@ -184,102 +184,32 @@
 
   <main id="main" class="main overflow-hidden">
     <div class="pagetitle">
-      <h1>Checkout</h1>
+      <h1>Payment</h1>
     </div>
     <!-- End Page Title -->
-    <div class="card">
+    <div th:if="${payment != null}" class="card">
       <div class="card-body">
-        <!-- Active Table -->
-        <table th:if="${cart.getProducts.size > 0}" class="table align-middle table-borderless">
-          <thead>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-              </td>
-            </tr>
-            <tr>
-              <!-- <th scope="col">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                  />
-                </div>
-              </th> -->
-              <th scope="col">Product</th>
-              <th scope="col">Unit Price</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Total Price</th>
-            </tr>
-          </thead>
-          <tbody th:each="items : ${cart.getProducts.keySet()}">
-            <tr>
-                <td th:text="${items.getName + ' (' + items.getQuantity + ' remaining)' }"></td>
-                <td th:text="${'RM'+ #numbers.formatDecimal(items.getPrice, 0, 2)}"></td>
-                <!-- quantity with button to increase or decrease -->
-                <td>
-                  <!-- quantity with button to increase or decrease -->
-                  
-                  <span th:text="${cart.getProducts.get(items)}"></span>
-                  
-                </td>
-                <td th:text="${'RM'+ #numbers.formatDecimal(items.getPrice * cart.getProducts.get(items), 0, 2)}"></td>
-                
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              
-            <tr>
-                <!-- checkout button -->
-                <td>
-                </td>
-                <td></td>
-                <td class="font-weight-bold">
-                  <p class="font-weight-bold">TOTAL PRICE: </p>
-                  <br>
-                  <p> </p>
-                </td>
-                <td>
-                  <p th:text="${'RM'+ #numbers.formatDecimal(cart.getPayment.getAmount, 0, 2)}"></p>
-                  <br>
-                  <!-- checkout button -->
-                  <a th:if="${!isUnpaidPayment}" th:href="@{/user/payment/checkout}" class="btn btn-sm btn-success">
-                    Place Order
-                    <i class="bi bi-arrow-right-circle"></i>
-                  </a>
-                </td>
-                
-            </tr>
-          </tfoot>
-        </table>
-        <!-- End Tables without borders -->
-        <div th:if="${cart.getProducts.size < 1}" class="alert alert-danger" role="alert">
-          <h4 class="alert-heading">Cart is empty!</h4>
-          <p>There are no products in your cart. Please add products to your cart.</p>
-          <hr>
-          <a th:href="@{/user/product/view}" class="btn btn-sm btn-primary">
-            Find Products
-            <i class="bi bi-arrow-right-circle"></i>
-          </a>
+        <h5 class="card-title">Complete Your Payment</h5>
+        <h6 class="card-subtitle mb-2">Total Amount: <span th:text="${'RM'+ #numbers.formatDecimal(payment.getAmount, 0, 2)}"></span></h6>
+        <form th:action="@{/user/payment/confirm}" th:object="${payment}" method="post">
+          <!-- select a method (dropdown) -->
+          <div class="form-group">
+            <label for="paymentMethod">Select a Payment Method</label>
+            <select th:name="method" th:field="*{method}" class="form-control" id="paymentMethod" name="paymentMethod">
+              <option value="CASH">Cash</option>
+              <option value="CARD">Card</option>
+              <option value="EWALLET">E-Wallet</option>
+            </select>
+          </div>
+          <!-- all other field -->
+          <button type="submit" class="btn btn-primary">Confirm Payment</button>
+        </form>
       </div>
-      <div th:if="${isUnpaidPayment}" class="alert alert-danger" role="alert">
-        <h4 class="alert-heading">Unpaid Payment!</h4>
-        <p>You have an unpaid payment. Please complete your payment before placing a new order.</p>
-        <hr>
-        <a th:href="@{/user/payment/view}" class="btn btn-sm btn-primary">
-          Complete Payment
-          <i class="bi bi-arrow-right-circle"></i>
-        </a>
+    </div>
+    <div th:if="${payment == null}" class="card">
+      <div class="card-body">
+        <h5 > NO UNPAID PAYMENT </h5>
+      </div>
     </div>
   </main>
     <a

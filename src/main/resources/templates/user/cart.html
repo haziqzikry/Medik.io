@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Dashboard</title>
+    <title>View Cart</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -224,8 +224,8 @@
           </thead>
           <tbody th:each="items : ${cart.getProducts.keySet()}">
             <tr>
-                <td th:text="${items.getName}"></td>
-                <td th:text="${items.getPrice}"></td>
+                <td th:text="${items.getName + ' (' + items.getQuantity + ' remaining)' }"></td>
+                <td th:text="${'RM'+ #numbers.formatDecimal(items.getPrice, 0, 2)}"></td>
                 <!-- quantity with button to increase or decrease -->
                 <td>
                   <!-- quantity with button to increase or decrease -->
@@ -237,7 +237,7 @@
                     <i class="bi bi-arrow-up-circle"></i>
                   </a>
                 </td>
-                <td th:text="${items.getPrice * cart.getProducts.get(items)}"></td>
+                <td th:text="${'RM'+ #numbers.formatDecimal(items.getPrice * cart.getProducts.get(items), 0, 2)}"></td>
                 <td>
                   <a th:href="@{remove/cart/{product}(product=${items.getId})}" class="btn btn-sm btn-danger">
                     <i class="bi bi-trash"></i>
@@ -260,12 +260,19 @@
                   <h5 class="" >TOTAL PRICE</h5>
                 </td>
                 <td>
-                  <p th:text="${cart.getPayment.getAmount}"></p>
+                  <p th:text="${'RM'+ #numbers.formatDecimal(cart.getPayment.getAmount, 0, 2)}"></p>
                 </td>
                 <td>
                     <!-- checkout button -->
                     <a  th:href="@{/user/order/checkout}" class="btn btn-sm btn-success">
                       Checkout
+                      <i class="bi bi-arrow-right-circle"></i>
+                    </a>
+                    <br>
+                    or
+                    <br>
+                    <a th:href="@{/user/product/view}" class="btn btn-sm btn-primary">
+                      Find More Products
                       <i class="bi bi-arrow-right-circle"></i>
                     </a>
                 </td>

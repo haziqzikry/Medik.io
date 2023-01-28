@@ -23,6 +23,9 @@ public class UserOrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private PaymentService paymentService;
+
     @GetMapping("/view")
     public String viewOrder() {
         return "user/vieworder";
@@ -53,8 +56,6 @@ public class UserOrderController {
         return "redirect:/user/order/cart";
     }
 
-    
-
     @GetMapping("/add-quantity/cart/{product}")
     public String addQuantityToCart(@PathVariable("product") Long productId, Principal principal, Model model) {
         orderService.updateProductQuantityInCart(productId, principal.getName(), 1);
@@ -71,7 +72,10 @@ public class UserOrderController {
     public String checkout(Principal principal, Model model) {
         Order cart = orderService.getCartByUsername(principal.getName());
         model.addAttribute("cart", cart);
+        Boolean isUnpaidPayment = paymentService.isUnpaidPayment(principal.getName());
+        model.addAttribute("isUnpaidPayment", isUnpaidPayment);
         return "user/checkout";
     }
+    
 
 }
