@@ -16,6 +16,9 @@ public class OrderService {
     @Autowired
     private PaymentService paymentService;
 
+    @Autowired
+    private ProductService productService;
+
     // ORDER CRUD
 
     public void saveOrder(Order order) {
@@ -50,16 +53,28 @@ public class OrderService {
         paymentService.newPayment(newOrder);
     }
 
-    public void addProductToCart(Product product, Long id) {
-        Order order = getCartByUserId(id);
-        // order.getProducts().add(product);
-        orderRepository.save(order);
+    public void addProductToCart(Long productId, String user) {
+        Product product = productService.getProductById(productId);
+        Order cart = getCartByUsername(user);
+        cart.getProducts().put(product, 1);
+        Order newCart = orderRepository.saveAndFlush(cart);
+        paymentService.updateAmount(newCart);
     }
 
-    public void removeProductFromCart(Product product, String user) {
-        Order order = getCartByUsername(user);
-        order.getProducts().remove(product);
-        orderRepository.save(order);
+    public void removeProductFromCart(Long productId, String user) {
+        Product product = productService.getProductById(productId);
+        Order cart = getCartByUsername(user);
+        cart.getProducts().remove(product);
+        Order newCart = orderRepository.saveAndFlush(cart);
+        paymentService.updateAmount(newCart);
+    }
+
+    public void updateProductQuantityInCart(Long productId, String user, int quantity) {
+        Product product = productService.getProductById(productId);
+        Order cart = getCartByUsername(user);
+        cart.getProducts().put(product, cart.getProducts().get(product) + quantity);
+        Order newCart = orderRepository.saveAndFlush(cart);
+        paymentService.updateAmount(newCart);
     }
 
     public void placeOrder(Order order) {
