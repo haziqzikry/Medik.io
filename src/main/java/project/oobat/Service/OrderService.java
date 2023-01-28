@@ -57,6 +57,10 @@ public class OrderService {
         orderRepository.deleteById(id);
     }
 
+    public Iterable<Order> getAllOrder() {
+        return orderRepository.findAll();
+    }
+
     // CART METHODS
 
     public void newCart(Order order) {
@@ -120,8 +124,8 @@ public class OrderService {
         payment.setStatus(Payment.Status.UNPAID);
         paymentService.savePayment(payment);
         orderRepository.save(order);
-    } 
-    
+    }
+
     public Order getCartByUserId(Long id) {
         return orderRepository.findByUserIdAndStatus(id, Order.Status.CART);
     }
@@ -174,7 +178,5 @@ public class OrderService {
         order.setProducts(sortedProducts);
         return order;
     }
-    
-    
 
 }

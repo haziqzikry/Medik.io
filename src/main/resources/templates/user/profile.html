@@ -57,7 +57,9 @@
         <div class="d-flex align-items-center justify-content-between">
            <a th:href="@{/user/home}" class="logo d-flex align-items-center">
              <img src="/img/logo.png" alt="">
+
              <span class="d-none d-lg-block text-white" >OObat</span>
+
            </a>
            <i class="bi bi-list toggle-sidebar-btn"></i>
          </div><!-- End Logo -->
@@ -98,7 +100,9 @@
                   </li>
                   <li>
                     <hr class="dropdown-divider">
-                  </li> 
+
+                  </li>
+
                   <li>
                     <hr class="dropdown-divider">
                   </li>
@@ -192,11 +196,11 @@
                   <div class="tab-content" id="profile-overview">
                     <form th:object="${user}" th:action="@{profile}" method="post" >
                       <div class="row mb-3">
-                        <label
+                        <!-- <label
                           for="username"
                           class="col-md-4 col-lg-3 col-form-label"
                           >Username</label
-                        >
+                        > -->
                         <div class="col-md-8 col-lg-9">
                           <input
                             name="username"
@@ -206,7 +210,11 @@
                             th:value="${user.username}"
                             th:field="*{username}"
                             th:name="username"
+
+                            hidden
+
                             disabled
+
                           />
                         </div>
                       </div>
@@ -283,8 +291,10 @@
                           />
                         </div>
                       </div>
+
                       <div class="row mb-3">
                         
+
                         <div class="col-md-8 col-lg-9">
                           <input
                             name="password"
@@ -299,7 +309,6 @@
                           />
                         </div>
                       </div>
-                      
                       <div class="col-md-8 col-lg-9">
                         <input
                           name="role"

@@ -13,6 +13,7 @@ public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
+
     public Payment getUnpaidPayment(String username){
         return paymentRepository.findByUsernameAndStatus(username, Payment.Status.UNPAID);
     }
@@ -28,6 +29,7 @@ public class PaymentService {
         for (Product p: order.getProducts().keySet()){
             payAmount = payAmount + (p.getPrice() * order.getProducts().get(p));
             System.out.println("payAmount for " + order.getProducts().get(p) + "times of " + p.getPrice() + "is" + payAmount);
+
         }
         payment.setAmount(payAmount);
         // payment.setOrder(order);
@@ -60,6 +62,8 @@ public class PaymentService {
         paymentRepository.deleteById(id);
     }
 
-    
+    public Iterable<Payment> getAllPayment() {
+        return paymentRepository.findAll();
+    }
 
 }

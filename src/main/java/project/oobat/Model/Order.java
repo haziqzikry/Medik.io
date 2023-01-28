@@ -36,7 +36,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Order {
 
-    public static enum Status{
+    public static enum Status {
         CART("CART"),
         PENDING("PENDING"),
         COMPLETED("COMPLETED"),
@@ -44,21 +44,22 @@ public class Order {
 
         private String status;
 
-        private Status(String status){
+        private Status(String status) {
             this.status = status;
         }
 
-        public String getStatus(){
+        public String getStatus() {
             return status;
         }
 
     }
-    
-    @Id @SequenceGenerator(name = "orders_seq", sequenceName = "orders_seq", allocationSize = 1)
+
+    @Id
+    @SequenceGenerator(name = "orders_seq", sequenceName = "orders_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_seq")
     private Long id;
 
-    //one to one relationship with payment (one order can have one payment)
+    // one to one relationship with payment (one order can have one payment)
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Payment payment;
 
@@ -69,9 +70,9 @@ public class Order {
 
     // @ManyToMany
     // @JoinTable(
-    //     name = "order_product", 
-    //     joinColumns = @JoinColumn(name = "order_id"), 
-    //     inverseJoinColumns = @JoinColumn(name = "product_id"))
+    // name = "order_product",
+    // joinColumns = @JoinColumn(name = "order_id"),
+    // inverseJoinColumns = @JoinColumn(name = "product_id"))
     // private List<Product> products;
 
     @ElementCollection
@@ -88,10 +89,10 @@ public class Order {
     private String date;
 
     // constructor without id
-    public Order(Payment payment, AppUser user, Map<Product, Integer> products, Status status) {
+    public Order(Payment payment, AppUser user, Map<Product, Integer> items4, Status status) {
         this.payment = payment;
         this.user = user;
-        this.products = products;
+        this.products = items4;
         this.status = status;
     }
 
@@ -103,15 +104,15 @@ public class Order {
     }
 
     // public void addProduct(Product product, int quantity) {
-    //     products.put(product, quantity);
+    // products.put(product, quantity);
     // }
-    
+
     // public void removeProduct(Product product) {
-    //     products.remove(product);
+    // products.remove(product);
     // }
-    
+
     // public void updateProductQuantity(Product product, int newQuantity) {
-    //     products.put(product, newQuantity);
+    // products.put(product, newQuantity);
     // }
 
 }

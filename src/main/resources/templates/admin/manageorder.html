@@ -52,17 +52,17 @@
     />
 
     <!-- Template Main CSS File -->
-    <link href="/css/aniqstyle.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
   </head>
 
   <body>
-        <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
        <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
          <img src="/img/logo.png" alt="">
-         <span class="d-none d-lg-block">OObat</span>
+         <span class="d-none d-lg-block text-white">OObat</span>
        </a>
        <i class="bi bi-list toggle-sidebar-btn"></i>
      </div><!-- End Logo -->
@@ -96,26 +96,11 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="manageProfile.html">
+                <a class="dropdown-item d-flex align-items-center" th:href="@{/admin/profile}">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
               </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="manageProfile.html">
-                  <i class="bi bi-gear"></i>
-                  <span>Account Settings</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-             
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -137,34 +122,42 @@
   
     </header><!-- End Header -->
 
-   <!-- ======= Sidebar ======= -->
-   <aside id="sidebar" class="sidebar">
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed " th:href="@{/admin/home}" >
+        <a class="nav-link collapsed " th:href="@{/admin/home}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/admin/order/view}">
+        <a class="nav-link collapsed" th:href="@{/admin/order/manage}">
           <i class="bi bi-clipboard-check"></i>
-          <span>View Orders</span>
+          <span>Manage Order</span>
         </a>
       </li><!-- End Profile Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/admin/product/view}">
+        <a class="nav-link collapsed" th:href="@{/admin/product/manage}">
            <i class='bx bxs-capsule'></i>
-          <span>View Products</span>
+          <span>Manage Product</span>
         </a>
       </li><!-- End Profile Page Nav -->
       
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/admin/order/cart}">
-          <i class="bi bi-cart"></i>
-          <span>View Cart</span>
+        <a class="nav-link collapsed" th:href="@{/admin/stock/manage}">
+          <i class="bi bi-box"></i>
+          <span>Manage Stock</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/admin/supplier/manage}">
+          <i class="bi bi-truck"></i>
+          <span>Manage Suppliers</span>
         </a>
       </li><!-- End Profile Page Nav -->
     
@@ -174,7 +167,6 @@
           <span>Profile</span>
         </a>
       </li><!-- End Profile Page Nav -->
-
 
   </aside><!-- End Sidebar-->
     <main id="main" class="main">
@@ -199,61 +191,7 @@
                 All Orders
               </button>
             </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="ship-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#ship"
-                type="button"
-                role="tab"
-                aria-controls="ship"
-                aria-selected="false"
-              >
-                To Ship
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="received-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#received"
-                type="button"
-                role="tab"
-                aria-controls="received"
-                aria-selected="false"
-              >
-                To Received
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="completed-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#completed"
-                type="button"
-                role="tab"
-                aria-controls="completed"
-                aria-selected="false"
-              >
-                Completed
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="Cancelled-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#Cancelled"
-                type="button"
-                role="tab"
-                aria-controls="Cancelled"
-                aria-selected="false"
-              >
-                Canceled
-              </button>
+
             </li>
           </ul>
           <div class="tab-content" id="myTabContent">
@@ -263,270 +201,55 @@
               role="tabpanel"
               aria-labelledby="all-tab"
             >
-              <table class="table datatable">
+   <table class="table datatable">
                 <thead>
                   <tr>
                     <th scope="col">No</th>
-                    <th scope="col">OrderID</th>
-                    <th scope="col">Customer</th>
+                    <th scope="col">Order Date</th>
+                    <!-- <th scope="col">Customer</th> -->
+                    <th scope="col">Payment Status</th>
+                    <th scope="col">Payment Method</th>
+                    <th scope="col"> Amount</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Total</th>
-
                     <th scope="col">Action</th>
+
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>01</td>
-                    <td>Otto</td>
-                    <td><span class="badge bg-success">Completed</span></td>
-                    <td>RM 100</td>
+                  <tr th:each="order, orderStat : ${orders}">
+                    <td  th:text="${orderStat.index}+1"></td>
+                    <td th:text="${order.payment.dateAdded}"></td>
+                    <td th:switch="${order.payment.status}">
+                      <span th:case="0" class="badge bg-warning" th:text="${order.payment.status}"></span>
+                      <span th:case="1" class="badge bg-success" th:text="${order.payment.status}"></span>
+                      <span th:case="2" class="badge bg-danger" th:text="${order.payment.status}"></span>
+                      <span th:case="*" class="badge bg-secondary" th:text="${order.payment.status}"></span>
+                    </td>
+                    <td th:text="${order.payment.method}"></td>
+                    <td th:text="${order.payment.amount}"></td>
+                    <td th:if="${order.status.status == 'CART'}"> <span class="badge bg-primary" th:text="${order.status.status}"></span>
+                    </td>
+                    <td th:if="${order.status.status == 'PENDING'}"> <span class="badge  bg-warningbg-danger" th:text="${order.status.status}"></span>
+                    </td>
+                    <td th:if="${order.status.status == 'COMPLETED'}"> <span class="badge bg-success" th:text="${order.status.status}"></span>
+                    </td>
+                    <td th:if="${order.status.status == 'CANCELLED'}"> <span class="badge bg-danger" th:text="${order.status.status}"></span>
+                    </td>
+                    
                     <td>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-printer"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-eye-fill"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-trash"></i>
-                      </a>
+                      <a
+                        class="bi bi-eye-fill"
+                        th:href="@{/admin/order/detail/{id}(id=${order.id})}"
+                        > Edit</a>
                     </td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>02</td>
-                    <td>Otto</td>
-                    <td>
-                      <span class="badge bg-info text-dark">To Ship</span>
-                    </td>
-                    <td>RM 25</td>
-
-                    <td>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-printer"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-eye-fill"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>02</td>
-                    <td>Otto</td>
-                    <td>
-                      <span class="badge bg-primary text-dark"
-                        >To Received</span
-                      >
-                    </td>
-                    <td>RM 25</td>
-
-                    <td>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-printer"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-eye-fill"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>03</td>
-                    <td>Ottot</td>
-                    <td><span class="badge bg-danger">Canceled</span></td>
-                    <td>RM 10</td>
-                    <td>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-printer"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-eye-fill"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
+                 
+                </tbody>
+              </table>
                 </tbody>
               </table>
             </div>
-            <div
-              class="tab-pane fade"
-              id="ship"
-              role="tabpanel"
-              aria-labelledby="ship-tab"
-            >
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">OrderID</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Total</th>
-
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>02</td>
-                    <td>Otto</td>
-                    <td>
-                      <span class="badge bg-info text-dark">To Ship</span>
-                    </td>
-                    <td>RM 25</td>
-
-                    <td>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-printer"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-eye-fill"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div
-              class="tab-pane fade"
-              id="received"
-              role="tabpanel"
-              aria-labelledby="received-tab"
-            >
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">OrderID</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Total</th>
-
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>02</td>
-                    <td>Otto</td>
-                    <td>
-                      <span class="badge bg-primary text-dark"
-                        >To Received</span
-                      >
-                    </td>
-                    <td>RM 25</td>
-
-                    <td>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-printer"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-eye-fill"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div
-              class="tab-pane fade"
-              id="completed"
-              role="tabpanel"
-              aria-labelledby="completed-tab"
-            >
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">OrderID</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Total</th>
-
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>01</td>
-                    <td>Otto</td>
-                    <td><span class="badge bg-success">Completed</span></td>
-                    <td>RM 100</td>
-                    <td>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-printer"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-eye-fill"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div
-              class="tab-pane fade"
-              id="Cancelled"
-              role="tabpanel"
-              aria-labelledby="completed-tab"
-            >
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">OrderID</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Total</th>
-
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>01</td>
-                    <td>Otto</td>
-                    <td><span class="badge bg-danger">Cancelled</span></td>
-                    <td>RM 100</td>
-                    <td>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-printer"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-eye-fill"></i>
-                      </a>
-                      <a href="#" class="btn btn-sm">
-                        <i class="bi bi-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+    
           </div>
         </div>
       </section>
