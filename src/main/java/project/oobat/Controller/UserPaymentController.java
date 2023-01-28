@@ -43,17 +43,7 @@ public class UserPaymentController {
 
     @PostMapping("/confirm")
     public String confirmPayment(Payment payment, Principal principal) {
-        Payment paymentToConfirm = paymentService.getUnpaidPayment(principal.getName());
-        paymentToConfirm.setMethod(payment.getMethod());
-        String today_date = java.time.LocalDate.now().toString();
-        String current_time = java.time.LocalTime.now().toString();
-        paymentToConfirm.setDateAdded(today_date);
-        paymentToConfirm.setTime(current_time);
-        paymentToConfirm.setStatus(Status.COMPLETED);
-        paymentService.savePayment(paymentToConfirm);
-        paymentToConfirm.getOrder().setStatus(Order.Status.COMPLETED);
-        paymentToConfirm.getOrder().setDate(today_date);
-        orderService.saveOrder(paymentToConfirm.getOrder());
+        paymentService.confirmPayment(payment, principal.getName());  
         return "redirect:/user/payment/view";
     }
 }

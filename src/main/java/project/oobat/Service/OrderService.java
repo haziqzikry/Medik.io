@@ -73,6 +73,19 @@ public class OrderService {
         paymentService.newPayment(newOrder);
     }
 
+    public Order getCartByUsername(String username) {
+        Order cart = orderRepository.findByUsernameAndStatus(username, Order.Status.CART);
+        if(cart == null) {
+            AppUser user = userService.loadUserByUsername(username);
+            Order newCart = new Order(new Payment(), user, Status.CART);
+            newCart(newCart);
+            cart = newCart;
+        }
+        // sort the products in the cart by name
+        Order sortedCart = sortProducts(cart);
+        return sortedCart;
+    }
+
     public void clearCart(String user) {
         Order cart = getCartByUsername(user);
         for(Product p : cart.getProducts().keySet()) {
@@ -134,18 +147,7 @@ public class OrderService {
         return orderRepository.findByUserIdAndStatus(id, Order.Status.CART);
     }
 
-    public Order getCartByUsername(String username) {
-        Order cart = orderRepository.findByUsernameAndStatus(username, Order.Status.CART);
-        if(cart == null) {
-            AppUser user = userService.loadUserByUsername(username);
-            Order newCart = new Order(new Payment(), user, Status.CART);
-            newCart(newCart);
-            cart = newCart;
-        }
-        // sort the products in the cart by name
-        Order sortedCart = sortProducts(cart);
-        return sortedCart;
-    }
+    
     
     // public Order getCartByUsername(String username) {
     //     Order cart = orderRepository.findByUsernameAndStatus(username, Order.Status.CART);

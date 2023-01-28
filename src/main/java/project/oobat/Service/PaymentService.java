@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import project.oobat.Model.Order;
 import project.oobat.Model.Payment;
 import project.oobat.Model.Product;
+import project.oobat.Model.Payment.Status;
 import project.oobat.Repository.PaymentRepository;
 
 @Service
@@ -13,6 +14,8 @@ public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    @Autowired
+    private OrderService orderService;
 
     public Payment getUnpaidPayment(String username){
         return paymentRepository.findByUsernameAndStatus(username, Payment.Status.UNPAID);
@@ -39,7 +42,6 @@ public class PaymentService {
     }
 
     public void updateAmount(Order order){
-        
         Payment payment = order.getPayment();
         double payAmount = 0;
         // loop order product list
@@ -48,6 +50,20 @@ public class PaymentService {
         }
         payment.setAmount(payAmount);
         paymentRepository.save(payment);
+    }
+
+    public void confirmPayment(Payment payment, String username){
+        Payment paymentToConfirm = getUnpaidPayment(username);
+        paymentToConfirm.setMethod(payment.getMethod());
+        String today_date = java.time.LocalDate.now().toString();
+        String current_time = java.time.LocalTime.now().toString();
+        paymentToConfirm.setDateAdded(today_date);
+        paymentToConfirm.setTime(current_time);
+        paymentToConfirm.setStatus(Status.COMPLETED);
+        savePayment(paymentToConfirm);
+        paymentToConfirm.getOrder().setStatus(Order.Status.COMPLETED);
+        paymentToConfirm.getOrder().setDate(today_date);
+        orderService.saveOrder(paymentToConfirm.getOrder());
     }
 
     public void savePayment(Payment payment) {
