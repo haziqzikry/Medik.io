@@ -13,6 +13,14 @@ public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    public Payment getUnpaidPayment(String username){
+        return paymentRepository.findByUsernameAndStatus(username, Payment.Status.UNPAID);
+    }
+
+    public Boolean isUnpaidPayment(String username){
+        return paymentRepository.existsByUsernameAndStatus(username, Payment.Status.UNPAID);
+    }
+
     public void newPayment(Order order){
         Payment payment = order.getPayment();
         double payAmount = 0;

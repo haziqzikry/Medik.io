@@ -244,19 +244,21 @@
                 <td>
                 </td>
                 <td></td>
-                <td>
+                <td class="font-weight-bold">
                   <p class="font-weight-bold">TOTAL PRICE: </p>
+                  <br>
+                  <p> </p>
                 </td>
                 <td>
                   <p th:text="${'RM'+ #numbers.formatDecimal(cart.getPayment.getAmount, 0, 2)}"></p>
+                  <br>
+                  <!-- checkout button -->
+                  <a th:if="${!isUnpaidPayment}" th:href="@{/user/payment/checkout}" class="btn btn-sm btn-success">
+                    Place Order
+                    <i class="bi bi-arrow-right-circle"></i>
+                  </a>
                 </td>
-                <td>
-                    <!-- checkout button -->
-                    <a  th:href="@{/user/payment/checkout}" class="btn btn-sm btn-success">
-                      Place Order
-                      <i class="bi bi-arrow-right-circle"></i>
-                    </a>
-                </td>
+                
             </tr>
           </tfoot>
         </table>
@@ -270,6 +272,14 @@
             <i class="bi bi-arrow-right-circle"></i>
           </a>
       </div>
+      <div th:if="${isUnpaidPayment}" class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Unpaid Payment!</h4>
+        <p>You have an unpaid payment. Please complete your payment before placing a new order.</p>
+        <hr>
+        <a th:href="@{/user/payment/view}" class="btn btn-sm btn-primary">
+          Complete Payment
+          <i class="bi bi-arrow-right-circle"></i>
+        </a>
     </div>
   </main>
     <a

@@ -184,22 +184,31 @@
 
   <main id="main" class="main overflow-hidden">
     <div class="pagetitle">
-      <h1>Checkout</h1>
+      <h1>Payment</h1>
     </div>
     <!-- End Page Title -->
-    <div class="card">
+    <div th:if="${payment != null}" class="card">
       <div class="card-body">
-        <!-- Active Table -->
-        
-        <!-- End Tables without borders -->
-        <div th:if="${cart.getProducts.size < 1}" class="alert alert-danger" role="alert">
-          <h4 class="alert-heading">Cart is empty!</h4>
-          <p>There are no products in your cart. Please add products to your cart.</p>
-          <hr>
-          <a th:href="@{/user/product/view}" class="btn btn-sm btn-primary">
-            Find Products
-            <i class="bi bi-arrow-right-circle"></i>
-          </a>
+        <h5 class="card-title">Complete Your Payment</h5>
+        <h6 class="card-subtitle mb-2">Total Amount: <span th:text="${'RM'+ #numbers.formatDecimal(payment.getAmount, 0, 2)}"></span></h6>
+        <form th:action="@{/user/payment/confirm}" th:object="${payment}" method="post">
+          <!-- select a method (dropdown) -->
+          <div class="form-group">
+            <label for="paymentMethod">Select a Payment Method</label>
+            <select th:name="method" th:field="*{method}" class="form-control" id="paymentMethod" name="paymentMethod">
+              <option value="CASH">Cash</option>
+              <option value="CARD">Card</option>
+              <option value="EWALLET">E-Wallet</option>
+            </select>
+          </div>
+          <!-- all other field -->
+          <button type="submit" class="btn btn-primary">Confirm Payment</button>
+        </form>
+      </div>
+    </div>
+    <div th:if="${payment == null}" class="card">
+      <div class="card-body">
+        <h5 > NO UNPAID PAYMENT </h5>
       </div>
     </div>
   </main>

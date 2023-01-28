@@ -115,6 +115,10 @@ public class OrderService {
 
     public void placeOrder(Order order) {
         order.setStatus(Order.Status.PENDING);
+        order.setDate(java.time.LocalDate.now().toString());
+        Payment payment = order.getPayment();
+        payment.setStatus(Payment.Status.UNPAID);
+        paymentService.savePayment(payment);
         orderRepository.save(order);
     } 
     
