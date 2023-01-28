@@ -29,6 +29,7 @@ public class PaymentService {
     }
 
     public void updateAmount(Order order){
+        
         Payment payment = order.getPayment();
         double payAmount = 0;
         // loop order product list

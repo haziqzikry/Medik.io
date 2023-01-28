@@ -179,9 +179,11 @@
             <img src="/img/ubat.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title" th:text="${product.name}"></h5>
-              <p class="card-text" style="text-align: left;" th:text="${'RM'+ #numbers.formatDecimal(product.price, 0, 2)}">
+              <p class="card-text" style="text-align: left;" th:text="${'RM'+ #numbers.formatDecimal(product.price, 0, 2) + '/unit'}">
+                <p class="card-text" style="text-align: left;" th:text="${product.quantity + ' remaining'}">
                 <div class="icon" style="float: right;">
-                  <a th:href="@{#}"><i class="bi bi-cart-plus-fill"></i></a>
+                  <a th:if="${product.quantity > 0}" th:href="@{/user/order/add/cart/{product}(product=${product.getId})}"><i class="bi bi-cart-plus-fill"></i></a>
+                  <a th:if="${product.quantity < 1}" >UNAVAILABLE</a>
                 </div>
               </p>
               

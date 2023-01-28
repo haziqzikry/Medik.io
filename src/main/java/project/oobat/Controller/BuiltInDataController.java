@@ -96,8 +96,8 @@ public class BuiltInDataController {
         // List<Product> items1 = new ArrayList<>();
         // items1.add(product6);
         // items1.add(product7);
-        List<Product> items2 = new ArrayList<>(Arrays.asList(product1, product2, product4));
-        List<Product> items3 = new ArrayList<>(Arrays.asList(product2, product6));
+        // List<Product> items2 = new ArrayList<>(Arrays.asList(product1, product2, product4));
+        // List<Product> items3 = new ArrayList<>(Arrays.asList(product2, product6));
         Map<Product, Integer> items4 = new HashMap<>();
         items4.put(product2, 1);
         items4.put(product4, 3);

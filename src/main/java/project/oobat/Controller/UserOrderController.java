@@ -53,8 +53,6 @@ public class UserOrderController {
         return "redirect:/user/order/cart";
     }
 
-    
-
     @GetMapping("/add-quantity/cart/{product}")
     public String addQuantityToCart(@PathVariable("product") Long productId, Principal principal, Model model) {
         orderService.updateProductQuantityInCart(productId, principal.getName(), 1);
@@ -73,5 +71,6 @@ public class UserOrderController {
         model.addAttribute("cart", cart);
         return "user/checkout";
     }
+    
 
 }
