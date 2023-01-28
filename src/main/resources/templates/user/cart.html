@@ -47,6 +47,7 @@
     />
 
     <!-- Template Main CSS File -->
+    <link href="/css/style.css" rel="stylesheet" />
     <link href="/css/view.css" rel="stylesheet" />
     <!-- <link href="/css/aniqstyle.css" rel="stylesheet" /> -->
   </head>
@@ -58,7 +59,7 @@
     <div class="d-flex align-items-center justify-content-between">
        <a th:href="@{/user/home}" class="logo d-flex align-items-center">
          <img src="/img/logo.png" alt="">
-         <span class="d-none d-lg-block">OObat</span>
+         <span class="d-none d-lg-block text-white">OObat</span>
        </a>
        <i class="bi bi-list toggle-sidebar-btn"></i>
      </div><!-- End Logo -->
@@ -163,6 +164,13 @@
           <span>View Cart</span>
         </a>
       </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/user/payment/view}">
+          <i class="bi bi-cash"></i>
+          <span>Complete Payment</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
     
       <li class="nav-item">
         <a class="nav-link collapsed" th:href="@{/user/profile}">
@@ -182,8 +190,20 @@
     <div class="card">
       <div class="card-body">
         <!-- Active Table -->
-        <table class="table align-middle">
+        <table th:if="${cart.getProducts.size > 0}" class="table align-middle">
           <thead>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <a th:href="@{/user/order/clear/cart}" class="btn btn-sm btn-danger">
+                  Clear Cart
+                  <i class="bi bi-trash"></i>
+                </a>
+              </td>
+            </tr>
             <tr>
               <!-- <th scope="col">
                 <div class="form-check">
@@ -227,38 +247,40 @@
           </tbody>
           <tfoot>
             <tr>
-              <!-- <th scope="col">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                  />
-                </div>
-              </th> -->
-              <th scope="col"></th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              
             <tr>
                 <!-- checkout button -->
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                  <h5 class="" >TOTAL PRICE</h5>
+                </td>
+                <td>
+                  <p th:text="${cart.getPayment.getAmount}"></p>
+                </td>
                 <td>
                     <!-- checkout button -->
-                    <form th:action="@{/user/order/checkout}" method="post">
-                        <input type="submit" value="Checkout" class="btn btn-sm btn-success">
-                    </form>
+                    <a  th:href="@{/user/order/checkout}" class="btn btn-sm btn-success">
+                      Checkout
+                      <i class="bi bi-arrow-right-circle"></i>
+                    </a>
                 </td>
             </tr>
           </tfoot>
         </table>
         <!-- End Tables without borders -->
+        <div th:if="${cart.getProducts.size < 1}" class="alert alert-danger" role="alert">
+          <h4 class="alert-heading">Cart is empty!</h4>
+          <p>There are no products in your cart. Please add products to your cart.</p>
+          <hr>
+          <a th:href="@{/user/product/view}" class="btn btn-sm btn-primary">
+            Find Products
+            <i class="bi bi-arrow-right-circle"></i>
+          </a>
       </div>
     </div>
   </main>
