@@ -42,6 +42,14 @@ public class UserOrderController {
         return "user/vieworder";
     }
 
+    @GetMapping("/view/{id}")
+
+    public String viewOrderById(@PathVariable("id") Long id, Model model) {
+        Order order = orderService.getOrderById(id);
+        model.addAttribute("order", order);
+        return "user/vieworder";
+    }
+
     @GetMapping("/cart")
     public String viewCart(Model model, Principal principal) {
         Order cart = orderService.getCartByUsername(principal.getName());

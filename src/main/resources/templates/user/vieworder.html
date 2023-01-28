@@ -207,6 +207,7 @@
                     <th scope="col">Payment Method</th>
                     <th scope="col"> Amount</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Action</th>
 
                   </tr>
                 </thead>
@@ -235,6 +236,9 @@
                     <td th:if="${order.status.status == 'COMPLETED'}"> <span class="badge bg-success" th:text="${order.status.status}"></span>
                     </td>
                     <td th:if="${order.status.status == 'CANCELLED'}"> <span class="badge bg-danger" th:text="${order.status.status}"></span>
+                    </td>
+                    <td>
+                      <a th:href="@{/user/order/view/{id}(id=${order.id})}" class="bi bi-eye-fill">View</a>
                     </td>
                   </tr>
                 </tbody>
