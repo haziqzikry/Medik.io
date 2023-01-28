@@ -43,7 +43,8 @@ public class UserPaymentController {
 
     @PostMapping("/confirm")
     public String confirmPayment(Payment payment, Principal principal) {
-        paymentService.confirmPayment(payment, principal.getName());  
+        Payment paymentToConfirm = paymentService.confirmPayment(payment, principal.getName());
+        orderService.saveOrder(paymentToConfirm.getOrder());  
         return "redirect:/user/payment/view";
     }
 }

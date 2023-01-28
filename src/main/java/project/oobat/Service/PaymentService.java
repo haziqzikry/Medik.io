@@ -14,9 +14,6 @@ public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @Autowired
-    private OrderService orderService;
-
     public Payment getUnpaidPayment(String username){
         return paymentRepository.findByUsernameAndStatus(username, Payment.Status.UNPAID);
     }
@@ -31,8 +28,6 @@ public class PaymentService {
         // loop order product list
         for (Product p: order.getProducts().keySet()){
             payAmount = payAmount + (p.getPrice() * order.getProducts().get(p));
-            System.out.println("payAmount for " + order.getProducts().get(p) + "times of " + p.getPrice() + "is" + payAmount);
-
         }
         payment.setAmount(payAmount);
         // payment.setOrder(order);
@@ -52,7 +47,7 @@ public class PaymentService {
         paymentRepository.save(payment);
     }
 
-    public void confirmPayment(Payment payment, String username){
+    public Payment confirmPayment(Payment payment, String username){
         Payment paymentToConfirm = getUnpaidPayment(username);
         paymentToConfirm.setMethod(payment.getMethod());
         String today_date = java.time.LocalDate.now().toString();
@@ -63,7 +58,7 @@ public class PaymentService {
         savePayment(paymentToConfirm);
         paymentToConfirm.getOrder().setStatus(Order.Status.COMPLETED);
         paymentToConfirm.getOrder().setDate(today_date);
-        orderService.saveOrder(paymentToConfirm.getOrder());
+        return paymentToConfirm;
     }
 
     public void savePayment(Payment payment) {
