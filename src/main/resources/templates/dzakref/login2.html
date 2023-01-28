@@ -1,0 +1,29 @@
+<!-- Login Form with thymeleaf -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <form action="#" th:action="@{/login}" method="post">
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" name="username" th:name="username" /></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" th:name="password"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Login"/></td>
+            </tr>
+        </table>
+    </form>
+    <div th:if="${param.error}"><p>Email or Password is invalid.</p></div> <br />
+    <!-- link to register if no account -->
+    <a href="/register">Register</a>
+</body>
+</html>

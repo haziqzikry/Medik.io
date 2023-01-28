@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Manage Product</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/vendor/quill/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/vendor/quill/quill.bubble.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/vendor/remixicon/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/vendor/simple-datatables/style.css"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+   <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+       <a th:href="@{/admin/home}" class="logo d-flex align-items-center">
+         <img src="/img/logo.png" alt="">
+         <span class="d-none d-lg-block text-white">OObat</span>
+       </a>
+       <i class="bi bi-list toggle-sidebar-btn"></i>
+     </div><!-- End Logo -->
+ 
+
+   
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        
+        <li class="nav-item dropdown pe-3">
+
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <img src= "/img/noProfPic.png" alt="Profile" class="rounded-circle">
+              <span class="d-none d-md-block dropdown-toggle ps-2"><jsp:getProperty name="user" property="username" /></span>
+            </a><!-- End Profile Image Icon -->
+  
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li class="dropdown-header">
+                <h6><span sec:authentication="principal.name"></h6>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" th:href="@{/admin/profile}">
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <form th:action="@{/logout}" method="post">
+                <div class="dropdown-item d-flex align-items-center">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <input type="submit" value="Sign Out" style="background-color:transparent; border:0px solid transparent; padding-left:0px; width:100%; text-align:left;">
+                </div>
+                </form>
+              </li>
+  
+            </ul><!-- End Profile Dropdown Items -->
+          </li><!-- End Profile Nav -->
+  
+        </ul>
+      </nav><!-- End Icons Navigation -->
+  
+    </header><!-- End Header -->
+
+
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed " th:href="@{/admin/home}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/admin/order/manage}">
+          <i class="bi bi-clipboard-check"></i>
+          <span>Manage Order</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/admin/product/manage}">
+           <i class='bx bxs-capsule'></i>
+          <span>Manage Product</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/admin/stock/manage}">
+          <i class="bi bi-box"></i>
+          <span>Manage Stock</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/admin/supplier/manage}">
+          <i class="bi bi-truck"></i>
+          <span>Manage Suppliers</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+    
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/admin/profile}">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+  </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+      <section class="section">
+          <div class="pagetitle">
+            <h1>Oobat Products</h1>
+            <p>Manage your product in store</p>
+          </div>
+          <!-- End Page Title -->
+
+          <div class="pagetitle">
+            <h1>Add/Edit Products</h1>
+          </div>
+          <div class="row">
+            <div class="col-xl-8">
+              <div class="card">
+                <div class="card-body">
+                  <form th:action="@{/admin/product/add}" th:object="${product}" method="post" >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="my-3">
+                          <label class="form-label">Product Name</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Product Name"
+                            th:name="name"
+                            th:field="*{name}"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="my-3">
+                          <label class="form-label">Price</label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            placeholder="Price"
+                            th:name="price"
+                            th:field="*{price}"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="my-3">
+                          <label class="form-label">Description</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Description"
+                            th:name="description"
+                            th:field="*{description}"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="my-3">
+                          
+                          <input
+                            type="number"
+                            value="0"
+                            class="form-control"
+                            placeholder="Quantity"
+                            th:name="quantity"
+                            th:field="*{quantity}"
+                            hidden
+                          />
+                        </div>
+                      </div>
+                    </div>
+                      <div class="col-md-6">
+                        <div class="my-5">
+                          <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Table of product -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <table class="table datatable text-white">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr th:each="product,iter : ${products}">
+                        <th scope="row" th:text="${iter.index}+1"></th>
+                        <td th:text="${product.name}"></td>
+                        <td th:text="${'RM'+ #numbers.formatDecimal(product.price, 0, 2)}"></td>
+                        <td th:text="${product.quantity}"></td>
+                        <td th:text="${product.description}"></td>
+                        <td th:text="${product.dateAdded}"></td>
+                        <td>
+                          <a th:href="@{/admin/product/edit/{id}(id=${product.id})}" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                          <a th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Table of product -->
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+    </main>
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/chart.js/chart.umd.js"></script>
+    <script src="/vendor/echarts/echarts.min.js"></script>
+    <script src="/vendor/quill/quill.min.js"></script>
+    <script src="/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/vendor/tinymce/tinymce.min.js"></script>
+    <script src="/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/js/main.js"></script>
+  </body>
+</html>
