@@ -96,6 +96,13 @@ public class Order {
         this.status = status;
     }
 
+    // constructor with only user and status
+    public Order(Payment payment, AppUser user, Status status) {
+        this.payment = payment;
+        this.user = user;
+        this.status = status;
+    }
+
     // public void addProduct(Product product, int quantity) {
     // products.put(product, quantity);
     // }

@@ -2,6 +2,7 @@ package project.oobat.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,8 +24,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Payment {
 
-    public static enum Status {
+
+    public static enum Status{
+        // a status for not even begin yet
+
         PENDING("PENDING"),
+        UNPAID("UNPAID"),
+        PROCESSING("PROCESSING"),
         COMPLETED("COMPLETED"),
         CANCELLED("CANCELLED");
 
@@ -67,11 +73,12 @@ public class Payment {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Method method;
 
-    @Enumerated
-    private Status status;
+    @Column(length = 32, columnDefinition = "varchar(32) default 'PENDING'")
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.PENDING;
 
     // column for date added with default value of current date
     @Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")

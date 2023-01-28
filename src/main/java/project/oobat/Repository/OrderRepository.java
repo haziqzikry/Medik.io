@@ -11,10 +11,12 @@ import project.oobat.Model.Order.Status;
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
     //query to get the cart of a user
-    @Query("SELECT o FROM Order o WHERE o.user.id = ?1 AND o.status = ?2")
+    @Query("SELECT o FROM Order o WHERE o.user.id = ?1 AND o.status = ?2 ORDER BY o.id DESC")
     public Order findByUserIdAndStatus(Long id, Status status);
     
-    //query to get the cart of a user by username
-    @Query("SELECT o FROM Order o WHERE o.user.username = ?1 AND o.status = ?2")
+    //query to get the cart of a user by username and sort the products in the cart by name
+    @Query("SELECT o FROM Order o WHERE o.user.username = ?1 AND o.status = ?2 ORDER BY o.id DESC")
     public Order findByUsernameAndStatus(String username, Status status);
+
 }
+    

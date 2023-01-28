@@ -13,17 +13,40 @@ public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    public void newPayment(Order order) {
+
+    public Payment getUnpaidPayment(String username){
+        return paymentRepository.findByUsernameAndStatus(username, Payment.Status.UNPAID);
+    }
+
+    public Boolean isUnpaidPayment(String username){
+        return paymentRepository.existsByUsernameAndStatus(username, Payment.Status.UNPAID);
+    }
+
+    public void newPayment(Order order){
         Payment payment = order.getPayment();
         double payAmount = 0;
         // loop order product list
-        for (Product p : order.getProducts().keySet()) {
-            payAmount = +p.getPrice();
+        for (Product p: order.getProducts().keySet()){
+            payAmount = payAmount + (p.getPrice() * order.getProducts().get(p));
+            System.out.println("payAmount for " + order.getProducts().get(p) + "times of " + p.getPrice() + "is" + payAmount);
+
         }
         payment.setAmount(payAmount);
         // payment.setOrder(order);
         // orderRepository.save(order);
         payment.setOrder(order);
+        paymentRepository.save(payment);
+    }
+
+    public void updateAmount(Order order){
+        
+        Payment payment = order.getPayment();
+        double payAmount = 0;
+        // loop order product list
+        for (Product p : order.getProducts().keySet()){
+            payAmount = payAmount + (p.getPrice() * order.getProducts().get(p));
+        }
+        payment.setAmount(payAmount);
         paymentRepository.save(payment);
     }
 

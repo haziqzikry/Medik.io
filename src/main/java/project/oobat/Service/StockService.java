@@ -55,4 +55,8 @@ public class StockService {
     public void updateStock(Stock stock) {
         stockRepository.save(stock);
     }
+
+    public Iterable<Stock> getStockByProduct(Product product) {
+        return stockRepository.findByProduct(product);
+    }
 }
