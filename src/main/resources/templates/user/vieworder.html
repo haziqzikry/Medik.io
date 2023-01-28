@@ -139,7 +139,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed" th:href="@{/user/order/view}">
             <i class="bi bi-clipboard-check"></i>
-            <span>View Orders</span>
+            <span>View Orders History</span>
           </a>
         </li><!-- End Profile Page Nav -->
         <li class="nav-item">
@@ -214,15 +214,29 @@
                   <tr th:each="order, orderStat : ${orders}">
                     <td  th:text="${orderStat.index}+1"></td>
                     <td th:text="${order.payment.dateAdded}"></td>
-                    <td th:text="${order.payment.status}"></td>
+                    <td th:switch="${order.payment.status}">
+                      <span th:case="0" class="badge bg-warning" th:text="${order.payment.status}"></span>
+                      <span th:case="1" class="badge bg-success" th:text="${order.payment.status}"></span>
+                      <span th:case="2" class="badge bg-danger" th:text="${order.payment.status}"></span>
+                      <span th:case="*" class="badge bg-secondary" th:text="${order.payment.status}"></span>
+                    </td>
+    
+     
                     <td th:text="${order.payment.method}"></td>
                     <td th:text="${order.payment.amount}"></td>
-                    <td th:text="${order.status.status}"></td>
-      
+<!-- 
+                    create an if statement to check the status of the order and display the appropriate badge
+                    status consists of 3 values: pending, processing, completed -->
 
+                    <td th:if="${order.status.status == 'CART'}"> <span class="badge bg-primary" th:text="${order.status.status}"></span>
+                    </td>
+                    <td th:if="${order.status.status == 'PENDING'}"> <span class="badge  bg-warningbg-danger" th:text="${order.status.status}"></span>
+                    </td>
+                    <td th:if="${order.status.status == 'COMPLETED'}"> <span class="badge bg-success" th:text="${order.status.status}"></span>
+                    </td>
+                    <td th:if="${order.status.status == 'CANCELLED'}"> <span class="badge bg-danger" th:text="${order.status.status}"></span>
                     </td>
                   </tr>
-                 
                 </tbody>
               </table>
             </div>
