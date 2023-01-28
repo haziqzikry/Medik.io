@@ -53,6 +53,13 @@ public class OrderService {
         paymentService.newPayment(newOrder);
     }
 
+    public void clearCart(String user) {
+        Order cart = getCartByUsername(user);
+        cart.getProducts().clear();
+        Order newCart = orderRepository.saveAndFlush(cart);
+        paymentService.updateAmount(newCart);
+    }
+
     public void addProductToCart(Long productId, String user) {
         Product product = productService.getProductById(productId);
         Order cart = getCartByUsername(user);

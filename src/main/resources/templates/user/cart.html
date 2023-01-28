@@ -190,7 +190,7 @@
     <div class="card">
       <div class="card-body">
         <!-- Active Table -->
-        <table class="table align-middle">
+        <table th:if="${cart.getProducts.size > 0}" class="table align-middle">
           <thead>
             <tr>
               <td></td>
@@ -257,14 +257,14 @@
                 <td></td>
                 <td></td>
                 <td>
-                  <h5>Total Price</h5>
+                  <h5 class="" >TOTAL PRICE</h5>
                 </td>
                 <td>
                   <p th:text="${cart.getPayment.getAmount}"></p>
                 </td>
                 <td>
                     <!-- checkout button -->
-                    <a th:if="${cart.getProducts.size > 0}" th:href="@{/user/order/checkout}" class="btn btn-sm btn-success">
+                    <a  th:href="@{/user/order/checkout}" class="btn btn-sm btn-success">
                       Checkout
                       <i class="bi bi-arrow-right-circle"></i>
                     </a>
@@ -273,6 +273,14 @@
           </tfoot>
         </table>
         <!-- End Tables without borders -->
+        <div th:if="${cart.getProducts.size < 1}" class="alert alert-danger" role="alert">
+          <h4 class="alert-heading">Cart is empty!</h4>
+          <p>There are no products in your cart. Please add products to your cart.</p>
+          <hr>
+          <a th:href="@{/user/product/view}" class="btn btn-sm btn-primary">
+            Find Products
+            <i class="bi bi-arrow-right-circle"></i>
+          </a>
       </div>
     </div>
   </main>

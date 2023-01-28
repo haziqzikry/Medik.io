@@ -23,12 +23,6 @@ public class UserOrderController {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private ProductService productService;
-
-    @Autowired
-    private PaymentService paymentService;
-
     @GetMapping("/view")
     public String viewOrder() {
         return "user/vieworder";
@@ -43,7 +37,7 @@ public class UserOrderController {
 
     @GetMapping("/clear/cart")
     public String clearCart(Principal principal) {
-        
+        orderService.clearCart(principal.getName());
         return "redirect:/user/order/cart";
     }
 

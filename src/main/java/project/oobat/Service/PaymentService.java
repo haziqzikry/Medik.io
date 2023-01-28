@@ -32,8 +32,8 @@ public class PaymentService {
         Payment payment = order.getPayment();
         double payAmount = 0;
         // loop order product list
-        for (Product p: order.getProducts().keySet()){
-            payAmount =+ (p.getPrice() * order.getProducts().get(p));
+        for (Product p : order.getProducts().keySet()){
+            payAmount = payAmount + (p.getPrice() * order.getProducts().get(p));
         }
         payment.setAmount(payAmount);
         paymentRepository.save(payment);
