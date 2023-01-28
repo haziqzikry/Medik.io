@@ -33,7 +33,7 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authManager (AuthenticationConfiguration authConfig) throws Exception {
+    public AuthenticationManager authManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();
     }
 
@@ -48,18 +48,19 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-    
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http
-            .authorizeRequests()
-                .antMatchers("/login", "/register", "/register-admin", "/register/submit", "/login/submit", "/data").permitAll()
+                .authorizeRequests()
+                .antMatchers("/login", "/register", "/register-admin", "/register/submit", "/login/submit", "/data")
+                .permitAll()
                 // .antMatchers("/admin/**").hasRole("PHARMACIST")
                 .antMatchers("/admin/**").hasAuthority("PHARMACIST")
                 // .antMatchers("/user/**").hasRole("CUSTOMER")
                 .antMatchers("/user/**").hasAuthority("CUSTOMER")
                 .anyRequest().authenticated()
                 .and()
-            .csrf().disable().formLogin()
+                .csrf().disable().formLogin()
                 .loginPage("/login")
                 // .loginProcessingUrl("/login/submit")
                 .successHandler(successHandler)
@@ -68,12 +69,12 @@ public class WebSecurityConfig {
                 .passwordParameter("password")
                 // .permitAll()
                 .and()
-            .logout()
+                .logout()
                 // .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login")
                 .permitAll()
                 .and()
-            .exceptionHandling()
+                .exceptionHandling()
                 .accessDeniedPage("/403");
 
         http.authenticationProvider(authenticationProvider());

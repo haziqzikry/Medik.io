@@ -1,5 +1,6 @@
 package project.oobat.Model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -21,12 +22,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    
-    @Id @SequenceGenerator(name = "products_seq", sequenceName = "products_seq", allocationSize = 1)
+
+    @Id
+    @SequenceGenerator(name = "products_seq", sequenceName = "products_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "products_seq")
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
@@ -38,6 +40,12 @@ public class Product {
     @Column(nullable = false)
     private int quantity;
 
+    @Column(nullable = false)
+    private boolean active;
+
+    @Column(columnDefinition = "DATE")
+    private String dateDeleted;
+
     // column for date added with default value of current date
     @Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")
     private String dateAdded;
@@ -46,7 +54,7 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Stock> stocks;
 
-    //constructor without id and date
+    // constructor without id and date
     public Product(String name, String description, double price, int quantity) {
         this.name = name;
         this.description = description;
@@ -54,4 +62,13 @@ public class Product {
         this.quantity = quantity;
     }
 
+
+    public Product(String name, String description, double price, int quantity, String dateAdded, boolean active) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.dateAdded = dateAdded;
+        this.active = active;
+    }
 }
