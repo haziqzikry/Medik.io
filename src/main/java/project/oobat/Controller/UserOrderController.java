@@ -34,7 +34,7 @@ public class UserOrderController {
     public String viewOrder(Model model, Principal principal) {
         Order order = new Order();
         model.addAttribute("order", order);
-        Iterable<Order> orders = orderService.getAllOrder();
+        Iterable<Order> orders = orderService.getAllNonCart(principal.getName());
         model.addAttribute("orders", orders);
         Iterable<Payment> payments = paymentService.getAllPayment();
         model.addAttribute("payments", payments);
@@ -77,26 +77,12 @@ public class UserOrderController {
 
     @GetMapping("/add-quantity/cart/{product}")
     public String addQuantityToCart(@PathVariable("product") Long productId, Principal principal, Model model) {
-
-        // increase the quantity of the selected product in the cart
-        Order cart = orderService.getCartByUsername(principal.getName());
-        Product product = productService.getProductById(productId);
-        // products in cart is a map
-        cart.getProducts().put(product, cart.getProducts().get(product) + 1);
-        orderService.saveOrder(cart);
         orderService.updateProductQuantityInCart(productId, principal.getName(), 1);
         return "redirect:/user/order/cart";
     }
 
     @GetMapping("/remove-quantity/cart/{product}")
     public String removeQuantityToCart(@PathVariable("product") Long productId, Principal principal, Model model) {
-
-        // decrease the quantity of the selected product in the cart
-        Order cart = orderService.getCartByUsername(principal.getName());
-        Product product = productService.getProductById(productId);
-        // products in cart is a map
-        cart.getProducts().put(product, cart.getProducts().get(product) - 1);
-        orderService.saveOrder(cart);
         orderService.updateProductQuantityInCart(productId, principal.getName(), -1);
         return "redirect:/user/order/cart";
     }

@@ -49,6 +49,10 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
+    public Iterable<Order> getAllNonCart(String user) {
+        return orderRepository.findByStatusNotAndUsername(user, Status.CART);
+    }
+
     public void deleteOrder(Order order) {
         orderRepository.delete(order);
     }

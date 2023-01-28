@@ -18,5 +18,9 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("SELECT o FROM Order o WHERE o.user.username = ?1 AND o.status = ?2 ORDER BY o.id DESC")
     public Order findByUsernameAndStatus(String username, Status status);
 
+    // query to get all orders that are not cart
+    @Query("SELECT o FROM Order o WHERE o.user.username = ?1 AND o.status != ?2 ORDER BY o.id DESC")
+    public Iterable<Order> findByStatusNotAndUsername(String username, Status status);
+
 }
     

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Manage Order Admin</title>
+    <title>View Order</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -139,7 +139,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed" th:href="@{/user/order/view}">
             <i class="bi bi-clipboard-check"></i>
-            <span>View Orders History</span>
+            <span>View Orders</span>
           </a>
         </li><!-- End Profile Page Nav -->
         <li class="nav-item">
@@ -153,6 +153,13 @@
           <a class="nav-link collapsed" th:href="@{/user/order/cart}">
             <i class="bi bi-cart"></i>
             <span>View Cart</span>
+          </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" th:href="@{/user/payment/view}">
+            <i class="bi bi-cash"></i>
+            <span>Complete Payment</span>
           </a>
         </li><!-- End Profile Page Nav -->
       
@@ -214,7 +221,7 @@
                 <tbody>
                   <tr th:each="order, orderStat : ${orders}">
                     <td  th:text="${orderStat.index}+1"></td>
-                    <td th:text="${order.payment.dateAdded}"></td>
+                    <td th:text="${order.date}"></td>
                     <td th:switch="${order.payment.status}">
                       <span th:case="0" class="badge bg-warning" th:text="${order.payment.status}"></span>
                       <span th:case="1" class="badge bg-success" th:text="${order.payment.status}"></span>

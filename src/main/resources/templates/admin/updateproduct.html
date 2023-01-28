@@ -252,7 +252,6 @@
                   </div>
                   <div class="col-md-6">
                     <div class="my-3">
-                      <label class="form-label">Quantity</label>
                       <input
                         type="number"
                         class="form-control"
@@ -260,6 +259,7 @@
                         th:name="quantity"
                         th:field="*{quantity}"
                         th:value="${product.quantity}"
+                        hidden
                       />
                     </div>
                   </div>

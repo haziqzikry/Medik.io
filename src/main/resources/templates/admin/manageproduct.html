@@ -221,13 +221,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="my-3">
-                          <label class="form-label">Quantity</label>
+                          
                           <input
                             type="number"
+                            value="0"
                             class="form-control"
                             placeholder="Quantity"
                             th:name="quantity"
                             th:field="*{quantity}"
+                            hidden
                           />
                         </div>
                       </div>
