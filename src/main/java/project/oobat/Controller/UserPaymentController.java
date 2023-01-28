@@ -47,7 +47,7 @@ public class UserPaymentController {
         paymentToConfirm.setMethod(payment.getMethod());
         String today_date = java.time.LocalDate.now().toString();
         String current_time = java.time.LocalTime.now().toString();
-        paymentToConfirm.setDate(today_date);
+        paymentToConfirm.setDateAdded(today_date);
         paymentToConfirm.setTime(current_time);
         paymentToConfirm.setStatus(Status.COMPLETED);
         paymentService.savePayment(paymentToConfirm);

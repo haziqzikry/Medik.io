@@ -25,7 +25,7 @@ public class UserOrderController {
     private OrderService orderService;
 
     @Autowired
-    private PaymentService paymentService;
+    private ProductService productService;
 
     @Autowired
     private PaymentService paymentService;
